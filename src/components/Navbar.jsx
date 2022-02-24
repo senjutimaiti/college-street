@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React from "react";
 
 const Navbar = () => {
-    return (
-    <>
-        
-    </>
-  )
-}
+  return (
+    <div>
+      <div>
+        <div>HOME</div>
+        <div>LOGO</div>
+        <div>MENU</div>
+      </div>
+    </div>
+  );
+};
 
-export default Navbar
+export default Navbar;
