@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
+
 const Navbar = () => {
   const [showNav, setShowNav] = useState(false);
   const [click, setClick] = useState(false);
@@ -9,10 +10,10 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="md:flex lg:flex justify-around items-center bg-white sticky top-0 z-20">
-      <div className=" flex justify-between items-center">
+    <nav className=" flex justify-between items-center bg-white sticky top-0 z-20">
+      <div className=" md:flex justify-between items-center">
         <div className=" ">
-          <div onClick={handleClick} className=" md:visible lg:hidden">
+          <div onClick={handleClick} className=" hidden">
             <i className={click ? "fa fa-times" : "fa fa-bars"} />
           </div>
           <ul
