@@ -11,7 +11,7 @@ const Input = ({ label, type, placeholder }) => {
         type={type}
         //value={value}
         placeholder={placeholder}
-        className={" border-2 border-slate-400 h-16 w-[500px] pl-3 mt-2 mb-5"}
+        className={" border-2 border-slate-200 h-12 w-[500px] pl-3 mt-2 mb-5"}
         //id={label}
         //onChange={onChange}
       />
