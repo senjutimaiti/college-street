@@ -7,7 +7,7 @@ const Navbar = () => {
   return (
     <div className="flex justify-between items-center w-screen h-24 bg-slate-300">
       <Menu className=" p-6" />
-      <img src={logo} alt="logo" className=" w-12 h-auto" />
+      <img src={logo} alt="logo" className=" w-20 h-auto align-middle" />
       <Menu2 />
     </div>
   );
