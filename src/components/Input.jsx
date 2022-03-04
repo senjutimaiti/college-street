@@ -1,9 +1,9 @@
 import React from "react";
 
-const Input = ({ label }) => {
+const Input = ({ label, type, placeholder }) => {
   return (
-    <div>
-      <label for={label} className="text-2xl fontOswald text-left">
+    <div >
+      <label for={label} className="text-xl fontOswald text-left ">
         {label}
       </label>
       <br />
@@ -11,7 +11,7 @@ const Input = ({ label }) => {
         type={type}
         //value={value}
         placeholder={placeholder}
-        //className={" border-2 border-black h-16 w-[500px] pl-10"}
+        className={" border-2 border-slate-400 h-16 w-[500px] pl-3 mt-2 mb-5"}
         //id={label}
         //onChange={onChange}
       />

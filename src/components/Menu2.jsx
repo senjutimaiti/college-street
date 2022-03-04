@@ -1,5 +1,6 @@
 import { FaSearch, FaUserAlt, FaOpencart } from "react-icons/fa";
 import { useHistory } from "react-router-dom";
+
 const Menu2 = () => {
   const history = useHistory();
   return (

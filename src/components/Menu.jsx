@@ -1,6 +1,7 @@
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
+
 const Menu = ({ className }) => {
   const [showNav, setShowNav] = useState(false);
   const handleClick = () => {
@@ -10,12 +11,12 @@ const Menu = ({ className }) => {
   return (
     <div className={className}>
       <div onClick={handleClick} className=" xl:hidden  fixed">
-        <GiHamburgerMenu className=" h-6 w-auto m-10 fixed top-3" />
+        <GiHamburgerMenu className=" h-6 w-auto m-6 fixed top-2" />
       </div>
       <div
         onClick={handleClick}
         className={
-          (showNav ? "-left-full" : "left-0") +
+          (showNav ? "left-0" : "-left-full") +
           " top-5 fixed h-auto w-96  bg-slate-200 transition-all duration-750 ease-in xl:hidden z-10"
         }
       >
