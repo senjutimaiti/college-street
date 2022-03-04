@@ -5,7 +5,7 @@ import logo from "../images/logo.png";
 
 const Navbar = () => {
   return (
-    <div className="flex justify-between items-center w-screen h-24 bg-white shadow-md sticky z-50">
+    <div className="flex justify-between items-center w-screen h-24 bg-white shadow-md sticky top-0 z-50">
       <Menu className=" p-6" />
       <img src={logo} alt="logo" className=" w-[80px] h-auto align-middle absolute left-1/2 ml-[-40px]" />
       <Menu2 />

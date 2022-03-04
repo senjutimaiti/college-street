@@ -7,13 +7,13 @@ const Carousels = () => {
   return (
     <div>
       <Carousel showThumbs={false} showArrows={true} autoPlay={true} infiniteLoop={true}>
-        <div style={{ height: "500px"}}>
+        <div style={{ height: "auto"}}>
           <img src={ban1} alt="img"/>
         </div>
-        <div style={{ height: "500px"}}>
+        <div style={{ height: "auto"}}>
           <img src={ban1} alt="img"/>
         </div>
-        <div style={{ height: "500px"}}>
+        <div style={{ height: "auto"}}>
           <img src={ban1} alt="img"/>
         </div>
       </Carousel>
