@@ -10,14 +10,14 @@ const Register = () => {
   return (
     <div>
       <Navbar />
-      {/* <div
+      <div
         className=" text-center w-screen h-auto text-lg text-slate-400 mt-5 hover:cursor-pointer"
         onClick={() => {
           history.push("/");
         }}
       >
         Home / Account
-      </div> */}
+      </div>
       <div className="text-center w-screen h-auto text-5xl text-black mt-6 font-bold mb-12">
         Register
       </div>
@@ -26,7 +26,7 @@ const Register = () => {
         <Input type="text" label="Last Name" placeholder="Last Name" />
         <Input type="text" label="Email" placeholder="Email" />
         <Input type="password" label="Password" placeholder="Password" />
-        <p className="text-md fontOswald text-left text-slate-400 mb-3 w-[500px]">Your personal data will
+        <p className="text-md fontOswald text-left text-slate-400 mb-3 md:w-[500px] w-[300px]">Your personal data will
          be used to support your experience throughout this website, to manage access to your account, 
          and for other purposes described in our
         <b 
@@ -34,17 +34,17 @@ const Register = () => {
           history.push("/PrivacyPolicy");
         }}
         target="_blank" className="text-black"> privacy policy</b></p>
-        <Button text = "REGISTER" className="  hover:border-2 hover:border-black h-16 w-[500px] mt-2 mb-5 font-bold text-md hover:text-black hover:bg-white bg-black text-white  transition-all duration-700 "/>
+        <Button text = "REGISTER" className="  hover:border-2 hover:border-black h-16 md:w-[500px] w-[300px] mt-2 mb-5 font-bold text-md hover:text-black hover:bg-white bg-black text-white  transition-all duration-700 "/>
         <div className=" flex h-auto w-screen justify-center items-center mb-5">
-          <hr className=" w-[215px] border-5 bg-slate-300 border-slate-300 mr-6" ></hr>
+          <hr className=" md:w-[215px] w-[115px] border-5 bg-slate-300 border-slate-300 mr-6" ></hr>
           <p className="text-xl fontOswald text-left">or</p>
-          <hr className=" w-[215px] border-5 bg-slate-300 border-slate-300 ml-6" ></hr>
+          <hr className=" md:w-[215px] w-[115px] border-5 bg-slate-300 border-slate-300 ml-6" ></hr>
         </div>
         <Button text = "LOG IN" 
         onClick={() => {
           history.push("/Login");
         }}
-        className="  border-2 border-slate-200 h-16 w-[500px] mt-2 mb-5 font-bold text-md text-black  hover:bg-black hover:text-white hover:border-black transition-all duration-700 "/>
+        className="  border-2 border-slate-200 h-16 md:w-[500px] w-[300px] mt-2 mb-5 font-bold text-md text-black  hover:bg-black hover:text-white hover:border-black transition-all duration-700 "/>
       </div>
     </div>
   )

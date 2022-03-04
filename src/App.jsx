@@ -4,6 +4,7 @@ import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import ResetPassword from "./Pages/ResetPassword";
 import Register from "./Pages/Register";
+import PrivacyPolicy from "./Pages/PrivacyPolicy";
 
 function App() {
   return (
@@ -20,6 +21,9 @@ function App() {
             <ResetPassword />
           </Route>
           <Route exact path="/Register">
+            <Register />
+          </Route>
+          <Route exact path="/PrivacyPolicy">
             <Register />
           </Route>
         </Switch>

@@ -8,10 +8,11 @@ const Menu = ({ className }) => {
     setShowNav(!showNav);
   };
   const history = useHistory();
+  
   return (
     <div className={className}>
-      <div onClick={handleClick} className=" xl:hidden  fixed">
-        <GiHamburgerMenu className=" h-6 w-auto m-6 fixed top-2" />
+      <div onClick={handleClick} className=" xl:hidden absolute top-2">
+        <GiHamburgerMenu className=" h-6 w-auto m-7" />
       </div>
       <div
         onClick={handleClick}

@@ -4,20 +4,20 @@ import { useHistory } from "react-router-dom";
 const Menu2 = () => {
   const history = useHistory();
   return (
-    <div className=" w-1/6 flex justify-around items-center">
+    <div className=" w-1/6 flex justify-center items-center mr-10">
       <div>
-        <FaSearch className=" w-5 h-auto hover:text-blue-500" />
+        <FaSearch className=" w-5 h-auto hover:text-blue-500 m-5" />
       </div>
       <div>
         <FaUserAlt
-          className=" w-5 h-auto hover:text-blue-500"
+          className=" w-5 h-auto hover:text-blue-500 m-5"
           onClick={() => {
             history.push("/Login");
           }}
         />
       </div>
       <div>
-        <FaOpencart className=" w-5 h-auto hover:text-blue-500" />
+        <FaOpencart className=" w-5 h-auto hover:text-blue-500 m-5" />
       </div>
     </div>
   );
