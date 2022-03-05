@@ -3,7 +3,7 @@ import React from "react";
 const Input = ({ label, type, placeholder }) => {
   return (
     <div >
-      <label for={label} className="text-xl fontOswald text-left ">
+      <label for={label} className="text-xl text-left ">
         {label}
       </label>
       <br />

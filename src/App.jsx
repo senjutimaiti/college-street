@@ -24,7 +24,7 @@ function App() {
             <Register />
           </Route>
           <Route exact path="/PrivacyPolicy">
-            <Register />
+            <PrivacyPolicy />
           </Route>
         </Switch>
       </Router>
