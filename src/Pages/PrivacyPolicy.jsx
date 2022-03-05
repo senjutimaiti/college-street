@@ -9,7 +9,7 @@ const PrivacyPolicy = () => {
     <div>
       <Navbar />
       <div
-        className=" text-center w-screen h-auto text-lg text-slate-400 mt-5 hover:cursor-pointer"
+        className=" text-center w-screen h-auto text-lg text-slate-400 mt-5 hover:cursor-pointer font-light"
         onClick={() => {
           history.push("/");
         }}
