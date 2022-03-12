@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import Carousels from "../components/Carousels";
 import ProductLessDetails from "../components/ProductLessDetails";
+import Categories from "../components/Categories";
 
 const Home = () => {
   const products = [
@@ -34,6 +35,7 @@ const Home = () => {
     <>
       <Navbar />
       <Carousels />
+      <Categories />
       {products.map((e, i) => {
         return <ProductLessDetails key={i} product={e} />;
       })}
