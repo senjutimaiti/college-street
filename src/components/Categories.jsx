@@ -41,7 +41,7 @@ const Categories = () => {
         {categories.map((product, i) => {
           return (
             <div className=" w-full m-5 relative">
-              <div className=" z-20 absolute top-5 text-xl md:text-2xl underline underline-offset-8 hover:cursor-pointer">
+              <div className=" z-20 absolute top-5 text-xl lg:text-2xl hover-underline-animation hover:cursor-pointer">
                 {product.category}
               </div>
               <img
