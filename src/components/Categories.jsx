@@ -37,17 +37,17 @@ const Categories = () => {
       <div className=" flex justify-center items-center m-20">
         <h3 className=" text-5xl">Categories</h3>
       </div>
-      <div className=" grid grid-cols-2 gap-x-4 gap-y-2 md:flex md:justify-center md:items-center ">
+      <div className=" grid grid-cols-2 gap-x-8 gap-y-2 justify-items-center m-10 md:flex md:justify-center md:items-center ">
         {categories.map((product, i) => {
           return (
-            <div className=" w-full m-10 relative">
-              <div className=" absolute top-5 text-xl md:text-2xl underline underline-offset-8 hover:cursor-pointer">
+            <div className=" w-full m-5 relative">
+              <div className=" z-20 absolute top-5 text-xl md:text-2xl underline underline-offset-8 hover:cursor-pointer">
                 {product.category}
               </div>
               <img
                 src={product.images}
                 alt="category"
-                className=" w-full md:w-[400px] h-auto hover:cursor-pointer "
+                className=" w-full md:w-[400px] h-auto hover:cursor-pointer parent"
               />
             </div>
           );

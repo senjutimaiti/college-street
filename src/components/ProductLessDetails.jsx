@@ -45,7 +45,7 @@ const ProductLessDetails = () => {
       <div className=" flex justify-center items-center m-20">
         <h3 className=" text-5xl">Products</h3>
       </div>
-      <div className=" grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-2 self-center items-center">
+      <div className=" grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-2 justify-items-center">
         {products.map((product, i) => {
           return (
             <div className="w-32 ">
