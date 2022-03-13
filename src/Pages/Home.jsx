@@ -5,7 +5,7 @@ import ProductLessDetails from "../components/ProductLessDetails";
 import Categories from "../components/Categories";
 import ban4 from "../images/ban4.jpg";
 import ban5 from "../images/ban5.jpg";
-
+import Footer from "../components/Footer";
 const Home = () => {
   return (
     <>
@@ -17,6 +17,7 @@ const Home = () => {
         <img src={ban4} alt={"banner"} className=" w-screen md:w-1/2 " />
         <img src={ban5} alt={"banner"} className=" w-screen md:w-1/2" />
       </div>
+      <Footer />
     </>
   );
 };
