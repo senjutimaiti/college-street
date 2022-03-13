@@ -1,7 +1,7 @@
 const express = require("express");
 const {
   registerUser,
-//   loginUser,
+  loginUser,
 //   logout,
 //   forgotPassword,
 //   resetPassword,
@@ -18,8 +18,7 @@ const {
 const router = express.Router();
 
 router.post("/register", registerUser);
-
-// router.route("/login").post(loginUser);
+router.post("/login", loginUser);
 
 // router.route("/password/forgot").post(forgotPassword);
 
