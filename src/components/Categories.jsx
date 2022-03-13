@@ -37,11 +37,11 @@ const Categories = () => {
       <div className=" flex justify-center items-center m-20">
         <h3 className=" text-5xl">Categories</h3>
       </div>
-      <div className=" grid grid-cols-2 gap-x-8 gap-y-2 justify-items-center m-10 md:flex md:justify-center md:items-center ">
+      <div className=" grid grid-cols-2 gap-x-3 gap-y-2 justify-items-center m-10 md:flex md:justify-center md:items-center ">
         {categories.map((product, i) => {
           return (
-            <div className=" w-full m-5 relative">
-              <div className=" z-20 absolute top-5 text-xl lg:text-2xl hover-underline-animation hover:cursor-pointer">
+            <div className=" m-4 relative drop-shadow-xl">
+              <div className=" z-20 absolute top-5 left-2 text-xl lg:text-xl hover-underline-animation hover:cursor-pointer">
                 {product.category}
               </div>
               <img
