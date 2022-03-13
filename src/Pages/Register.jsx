@@ -22,8 +22,7 @@ const Register = () => {
         Register
       </div>
       <div className=" flex flex-col h-auto w-screen justify-center items-center">
-        <Input type="text" label="First Name" placeholder="First Name" />
-        <Input type="text" label="Last Name" placeholder="Last Name" />
+        <Input type="text" label= "Name" placeholder="Name" />
         <Input type="text" label="Email" placeholder="Email" />
         <Input type="password" label="Password" placeholder="Password" />
         <p className="text-md text-left text-slate-400 mb-3 md:w-[500px] w-[300px] font-light">Your personal data will
