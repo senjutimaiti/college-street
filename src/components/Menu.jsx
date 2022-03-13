@@ -18,7 +18,7 @@ const Menu = ({ className }) => {
         onClick={handleClick}
         className={
           (showNav ? "left-0" : "-left-full") +
-          " top-5 fixed h-auto w-96  bg-slate-200 transition-all duration-750 ease-in xl:hidden z-10"
+          " top-5 fixed h-auto w-96  bg-white drop-shadow-md transition-all duration-750 ease-in xl:hidden z-10"
         }
       >
         <div className="flex flex-col m-10 text-xl ">
@@ -58,7 +58,7 @@ const Menu = ({ className }) => {
       </div>
       <div className=" hidden h-16  justify-around items-center xl:flex text-lg ">
         <div
-          className=" p-6 hover:text-blue-300 transition-all duration-750 ease-in"
+          className=" p-6 hover:text-blue-300 transition-all duration-750 ease-in font-extrabold"
           onClick={() => {
             history.push("/");
           }}
@@ -66,7 +66,7 @@ const Menu = ({ className }) => {
           Home
         </div>
         <div
-          className=" p-6 hover:text-blue-300 transition-all duration-750 ease-in"
+          className=" p-6 hover:text-blue-300 transition-all duration-750 ease-in font-extrabold"
           onClick={() => {
             history.push("/Shop");
           }}
@@ -74,7 +74,7 @@ const Menu = ({ className }) => {
           Shop
         </div>
         <div
-          className=" p-6 hover:text-blue-300 transition-all duration-750 ease-in"
+          className=" p-6 hover:text-blue-300 transition-all duration-750 ease-in font-extrabold"
           onClick={() => {
             history.push("/AboutUs");
           }}
@@ -82,7 +82,7 @@ const Menu = ({ className }) => {
           About Us
         </div>
         <div
-          className=" p-6 hover:text-blue-300 transition-all duration-750 ease-in"
+          className=" p-6 hover:text-blue-300 transition-all duration-750 ease-in font-extrabold"
           onClick={() => {
             history.push("/ContactUs");
           }}
