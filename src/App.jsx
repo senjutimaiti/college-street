@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import ResetPassword from "./pages/ResetPassword";
 import Register from "./pages/Register";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Search from "./pages/Search";
 
 function App() {
   return (
@@ -25,6 +26,9 @@ function App() {
           </Route>
           <Route exact path="/PrivacyPolicy">
             <PrivacyPolicy />
+          </Route>
+          <Route exact path="/Search">
+            <Search />
           </Route>
         </Switch>
       </Router>

@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <>
       <Navbar />
-      <div className=" bg-white pb-40">
+      <div className=" bg-white pb-10">
         <Carousels />
         <ProductLessDetails />
         <div className=" flex flex-col justify-center items-center m-20">
