@@ -2,7 +2,6 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import Carousels from "../components/Carousels";
 import ProductLessDetails from "../components/ProductLessDetails";
-import Categories from "../components/Categories";
 import ban4 from "../images/ban4.jpg";
 import ban5 from "../images/ban5.jpg";
 import Footer from "../components/Footer";
@@ -14,7 +13,6 @@ const Home = () => {
       <Navbar />
       <div className=" bg-white pb-40">
         <Carousels />
-        <Categories />
         <ProductLessDetails />
         <div className=" flex flex-col justify-center items-center m-20">
           <h3 className=" text-2xl my-2">We provide fresh groceries.</h3>

@@ -7,6 +7,8 @@ import P5 from "../images/P5.jpg";
 import P6 from "../images/P6.jpg";
 import P7 from "../images/P7.jpg";
 import P8 from "../images/P8.jpg";
+import "../styles/CustomStyles.css";
+
 const ProductLessDetails = () => {
   const products = [
     {
@@ -66,14 +68,18 @@ const ProductLessDetails = () => {
       <div className=" grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-5 gap-y-2 justify-items-center ml-5 mr-5">
         {products.map((product, i) => {
           return (
-            <div className=" drop-shadow-lg relative ">
-              <div className=" absolute top-7 left-2 text-sm  lg:text-xl hover-underline-animation">
+            <div className=" m-4 relative drop-shadow-xl">
+              <div className=" z-20 absolute top-10 left-3 text-md lg:text-xl hover-underline-animation hover:cursor-pointer">
                 {product.name}
               </div>
-              <div className=" absolute top-7 right-2 text-sm lg:text-base text-gray-700">
+              <div className=" z-20 absolute top-10 right-3 text-md lg:text-base">
                 {product.price}
               </div>
-              <img src={product.images} alt="product" />
+              <img
+                src={product.images}
+                alt="product"
+                className=" w-full md:w-[400px] h-auto hover:cursor-pointer parent"
+              />
             </div>
           );
         })}
