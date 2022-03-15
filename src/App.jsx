@@ -6,6 +6,8 @@ import ResetPassword from "./pages/ResetPassword";
 import Register from "./pages/Register";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Search from "./pages/Search";
+import AboutUs from "./pages/AboutUs";
+import ContactUs from "./pages/ContactUs";
 
 function App() {
   return (
@@ -29,6 +31,12 @@ function App() {
           </Route>
           <Route exact path="/Search">
             <Search />
+          </Route>
+          <Route exact path="/AboutUs">
+            <AboutUs />
+          </Route>
+          <Route exact path="/ContactUs">
+            <ContactUs />
           </Route>
         </Switch>
       </Router>
