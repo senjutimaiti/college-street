@@ -12,7 +12,7 @@ const Home = () => {
   return (
     <>
       <Navbar />
-      <div className=" bg-white">
+      <div className=" bg-white pb-40">
         <Carousels />
         <Categories />
         <ProductLessDetails />
