@@ -7,6 +7,7 @@ import ban5 from "../images/ban5.jpg";
 import Footer from "../components/Footer";
 import Button from "../components/Button";
 
+
 const Home = () => {
   return (
     <>
