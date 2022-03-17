@@ -9,14 +9,13 @@ const Navbar = () => {
   if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
     
     document.getElementById("navbar").style.background = "#ffffff";
-    document.getElementById("navbar").style.transition = "ease-in-out .5s";
   } else {
    
     document.getElementById("navbar").style.background = "none";
   }
 }
   return (
-    <div id="navbar" className="flex justify-between items-center w-screen h-24 bg-white fixed top-0 z-50">
+    <div id="navbar" className=" bg-transparent flex justify-between items-center w-screen h-24 fixed top-0 z-50 ease-in-out duration-500">
       <Menu className=" p-6" />
       <img src={logo} alt="logo" className=" w-[80px] h-auto align-middle absolute left-1/2 ml-[-40px]" />
       <Menu2 />

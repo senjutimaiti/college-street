@@ -15,7 +15,7 @@ const Footer = () => {
         <AiFillFacebook className=" text-2xl ml-3 hover:text-blue-600" />
       </div>
       <div className="font-light tracking-wider mt-4">
-        2020 <span className=" font-bold">Oh!Food</span> all rights reserved.
+        2022 <span className=" font-bold">Oh!Food</span> all rights reserved.
       </div>
       <div>
         <img src={Pay} alt={"Cards"} className=" h-14" />
