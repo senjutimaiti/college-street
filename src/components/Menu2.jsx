@@ -15,18 +15,18 @@ const Menu2 = () => {
     <>
       <div className=" w-1/6 flex justify-center items-center mr-10">
         <div>
-          <FaSearch onClick={handleClick} className=" w-5 h-auto hover:text-blue-500 m-5" />
+          <FaSearch title="Search" onClick={handleClick} className=" w-5 h-auto hover:text-zinc-400 m-5" />
         </div>
         <div>
-          <FaUserAlt
-            className=" w-5 h-auto hover:text-blue-500 m-5"
+          <FaUserAlt title="User"
+            className=" w-5 h-auto hover:text-zinc-400 m-5"
             onClick={() => {
               history.push("/Login");
             }}
           />
         </div>
         <div>
-          <FaOpencart className=" w-5 h-auto hover:text-blue-500 m-5" />
+          <FaOpencart title="Cart" className=" w-5 h-auto hover:text-zinc-400 m-5" />
         </div>
       </div>
       <div className={(showSearch ? "flex" : "hidden") + " bg-black/70 w-full h-full fixed justify-center items-center top-0"}>

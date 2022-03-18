@@ -9,8 +9,8 @@ const Home = () => {
 
   return (
     <>
-      <Navbar />
-      <div className=" bg-white ">
+      <div className=" bg-white">
+        <Navbar />
         <Carousels />
         <ProductLessDetails />
         <HomeBanners />
