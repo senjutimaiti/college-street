@@ -15,18 +15,18 @@ const Menu2 = () => {
     <>
       <div className=" w-1/6 flex justify-center items-center mr-10">
         <div>
-          <FaSearch title="Search" onClick={handleClick} className=" w-5 h-auto hover:text-zinc-400 m-5" />
+          <FaSearch title="Search" onClick={handleClick} className=" w-5 h-auto hover:text-zinc-400 m-5 hover:cursor-pointer" />
         </div>
         <div>
           <FaUserAlt title="User"
-            className=" w-5 h-auto hover:text-zinc-400 m-5"
+            className=" w-5 h-auto hover:text-zinc-400 m-5 hover:cursor-pointer"
             onClick={() => {
               history.push("/Login");
             }}
           />
         </div>
         <div>
-          <FaOpencart title="Cart" className=" w-5 h-auto hover:text-zinc-400 m-5" />
+          <FaOpencart onClick = {() => { history.push("/Cart")}} title="Cart" className=" w-5 h-auto hover:text-zinc-400 m-5 hover:cursor-pointer" />
         </div>
       </div>
       <div className={(showSearch ? "flex" : "hidden") + " bg-black/70 w-full h-full fixed justify-center items-center top-0"}>

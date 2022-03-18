@@ -8,6 +8,7 @@ import P6 from "../images/P6.jpg";
 import P7 from "../images/P7.jpg";
 import P8 from "../images/P8.jpg";
 import "../styles/CustomStyles.css";
+import Button from "../components/Button";
 
 const ProductLessDetails = () => {
   const products = [
@@ -80,6 +81,9 @@ const ProductLessDetails = () => {
                 alt="product"
                 className=" w-full md:w-[400px] h-auto hover:cursor-pointer parent"
               />
+              <div className=" flex justify-center items-center left-1/2 -ml-[100px] z-50 absolute bottom-0">
+                <Button text = "ADD TO CART" className=" hover:border-2 hover:border-black h-10 w-[200px] mt-2 mb-5 font-bold text-md hover:text-black hover:bg-white bg-black text-white  transition-all duration-700 "/> 
+              </div>
             </div>
           );
         })}

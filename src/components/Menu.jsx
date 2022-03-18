@@ -12,7 +12,7 @@ const Menu = ({ className }) => {
   return (
     <div className={className}>
       <div onClick={handleClick} className=" xl:hidden absolute top-2">
-        <GiHamburgerMenu className=" h-6 w-auto m-7" />
+        <GiHamburgerMenu className=" h-6 w-auto m-7 hover:cursor-pointer" />
       </div>
       <div
         onClick={handleClick}
@@ -23,7 +23,7 @@ const Menu = ({ className }) => {
       >
         <div className="flex flex-col m-10 text-xl ">
           <div
-            className=" p-4 hover:text-zinc-400 transition-all duration-750 ease-in"
+            className=" p-4 hover:text-zinc-400 transition-all duration-750 ease-in hover:cursor-pointer"
             onClick={() => {
               history.push("/");
             }}
@@ -31,7 +31,7 @@ const Menu = ({ className }) => {
             Home
           </div>
           <div
-            className=" p-4 hover:text-zinc-400 transition-all duration-750 ease-in"
+            className=" p-4 hover:text-zinc-400 transition-all duration-750 ease-in hover:cursor-pointer"
             onClick={() => {
               history.push("/Shop");
             }}
@@ -39,7 +39,7 @@ const Menu = ({ className }) => {
             Shop
           </div>
           <div
-            className=" p-4 hover:text-zinc-400 transition-all duration-750 ease-in"
+            className=" p-4 hover:text-zinc-400 transition-all duration-750 ease-in hover:cursor-pointer"
             onClick={() => {
               history.push("/AboutUs");
             }}
@@ -47,7 +47,7 @@ const Menu = ({ className }) => {
             About Us
           </div>
           <div
-            className=" p-4 hover:text-zinc-400 transition-all duration-750 ease-in"
+            className=" p-4 hover:text-zinc-400 transition-all duration-750 ease-in hover:cursor-pointer"
             onClick={() => {
               history.push("/ContactUs");
             }}
@@ -58,7 +58,7 @@ const Menu = ({ className }) => {
       </div>
       <div className=" hidden h-16  justify-around items-center xl:flex text-lg ">
         <div
-          className=" p-6 hover:text-zinc-400 transition-all duration-750 ease-in font-extrabold"
+          className=" p-6 hover:text-zinc-400 transition-all duration-750 ease-in font-extrabold hover:cursor-pointer"
           onClick={() => {
             history.push("/");
           }}
@@ -66,7 +66,7 @@ const Menu = ({ className }) => {
           Home
         </div>
         <div
-          className=" p-6 hover:text-zinc-400 transition-all duration-750 ease-in font-extrabold"
+          className=" p-6 hover:text-zinc-400 transition-all duration-750 ease-in font-extrabold hover:cursor-pointer"
           onClick={() => {
             history.push("/Shop");
           }}
@@ -74,7 +74,7 @@ const Menu = ({ className }) => {
           Shop
         </div>
         <div
-          className=" p-6 hover:text-zinc-400 transition-all duration-750 ease-in font-extrabold"
+          className=" p-6 hover:text-zinc-400 transition-all duration-750 ease-in font-extrabold hover:cursor-pointer"
           onClick={() => {
             history.push("/AboutUs");
           }}
@@ -82,7 +82,7 @@ const Menu = ({ className }) => {
           About Us
         </div>
         <div
-          className=" p-6 hover:text-zinc-400 transition-all duration-750 ease-in font-extrabold"
+          className=" p-6 hover:text-zinc-400 transition-all duration-750 ease-in font-extrabold hover:cursor-pointer"
           onClick={() => {
             history.push("/ContactUs");
           }}
