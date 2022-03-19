@@ -3,6 +3,7 @@ const validator = require("validator");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
+const Address = require("./Address");
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -28,10 +29,15 @@ const userSchema = new mongoose.Schema({
     minLength: [10, "Mobile number should be of 10 digits"],
     maxLength: [10, "Mobile number should be of 10 digits"],
   },
-  
+
   createdAt: {
     type: Date,
     default: Date.now,
+  },
+
+  address: {
+    type: [Address],
+    default: [],
   },
 
   resetPasswordToken: String,
