@@ -2,13 +2,13 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import {
-  newProductReducer,
-  newReviewReducer,
-  productDetailsReducer,
-  productReducer,
-  productReviewsReducer,
+  // newProductReducer,
+  // newReviewReducer,
+  // productDetailsReducer,
+  // productReducer,
+  // productReviewsReducer,
   productsReducer,
-  reviewReducer,
+  //reviewReducer,
 } from "./reducers/productReducer";
 
 // import {
