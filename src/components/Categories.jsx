@@ -35,7 +35,7 @@ const Categories = () => {
   return (
     <>
       <div className=" flex justify-center items-center m-20">
-        <h3 className=" text-5xl">Categoriess</h3>
+        <h3 className=" text-5xl">Categories</h3>
       </div>
       <div className=" grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-5 gap-y-2 justify-items-center ml-5 mr-5">
         {categories.map((category, i) => {
