@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
-import P1 from "../images/P1.jpg";
-import P2 from "../images/P2.jpg";
-import P3 from "../images/P3.jpg";
-import P4 from "../images/P4.jpg";
-import P5 from "../images/P5.jpg";
-import P6 from "../images/P6.jpg";
-import P7 from "../images/P7.jpg";
-import P8 from "../images/P8.jpg";
+// import P1 from "../images/P1.jpg";
+// import P2 from "../images/P2.jpg";
+// import P3 from "../images/P3.jpg";
+// import P4 from "../images/P4.jpg";
+// import P5 from "../images/P5.jpg";
+// import P6 from "../images/P6.jpg";
+// import P7 from "../images/P7.jpg";
+// import P8 from "../images/P8.jpg";
 import "../styles/CustomStyles.css";
 import ProductCard from "./ProductCard";
 import { getProduct } from "../actions/productAction";
@@ -17,7 +17,7 @@ import { useSelector, useDispatch } from "react-redux";
 const ProductLessDetails = () => {
   const dispatch = useDispatch();
   // const alert = useAlert();
-  const { loading, error, products } = useSelector((state) => state.products);
+  const { products } = useSelector((state) => state.products);
 
   useEffect(() => {
     // if (error) {
