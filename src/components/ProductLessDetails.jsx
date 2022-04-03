@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import P1 from "../images/P1.jpg";
 import P2 from "../images/P2.jpg";
 import P3 from "../images/P3.jpg";
@@ -9,58 +9,73 @@ import P7 from "../images/P7.jpg";
 import P8 from "../images/P8.jpg";
 import "../styles/CustomStyles.css";
 import ProductCard from "./ProductCard";
+import { getProduct } from "../actions/productAction";
+import { useSelector, useDispatch } from "react-redux";
+// import { clearErrors } from "../actions/productAction";
+// import { useAlert } from "react-alert";
 
 const ProductLessDetails = () => {
-  const products = [
-    {
-      id: "asdfasdf",
-      name: "Apples",
-      price: "Rs 70",
-      images: P1,
-    },
-    {
-      id: "asdfasdf",
-      name: "Onions",
-      price: "Rs 35",
-      images: P2,
-    },
-    {
-      id: "asdfasdf",
-      name: "Oranges",
-      price: "Rs 35",
-      images: P3,
-    },
-    {
-      id: "asdfasdf",
-      name: "Cheese",
-      price: "Rs 120",
-      images: P4,
-    },
-    {
-      id: "asdfasdf",
-      name: "Broccoli",
-      price: "Rs 200",
-      images: P5,
-    },
-    {
-      id: "asdfasdf",
-      name: "Eggs",
-      price: "Rs 8",
-      images: P6,
-    },
-    {
-      id: "asdfasdf",
-      name: "Fish",
-      price: "Rs 300",
-      images: P7,
-    },
-    {
-      id: "asdfasdf",
-      name: "Chicken",
-      price: "Rs 200",
-      images: P8,
-    },
-  ];
+  const dispatch = useDispatch();
+  // const alert = useAlert();
+  const { loading, error, products } = useSelector((state) => state.products);
+
+  useEffect(() => {
+    // if (error) {
+    //   alert.error(error);
+    //   dispatch(clearErrors());
+    // }
+    dispatch(getProduct());
+  }, [dispatch]);
+  // const products1 = [
+  //   {
+  //     id: "asdfasdf",
+  //     name: "Apples",
+  //     price: "Rs 70",
+  //     images: P1,
+  //   },
+  //   {
+  //     id: "asdfasdf",
+  //     name: "Onions",
+  //     price: "Rs 35",
+  //     images: P2,
+  //   },
+  //   {
+  //     id: "asdfasdf",
+  //     name: "Oranges",
+  //     price: "Rs 35",
+  //     images: P3,
+  //   },
+  //   {
+  //     id: "asdfasdf",
+  //     name: "Cheese",
+  //     price: "Rs 120",
+  //     images: P4,
+  //   },
+  //   {
+  //     id: "asdfasdf",
+  //     name: "Broccoli",
+  //     price: "Rs 200",
+  //     images: P5,
+  //   },
+  //   {
+  //     id: "asdfasdf",
+  //     name: "Eggs",
+  //     price: "Rs 8",
+  //     images: P6,
+  //   },
+  //   {
+  //     id: "asdfasdf",
+  //     name: "Fish",
+  //     price: "Rs 300",
+  //     images: P7,
+  //   },
+  //   {
+  //     id: "asdfasdf",
+  //     name: "Chicken",
+  //     price: "Rs 200",
+  //     images: P8,
+  //   },
+  // ];
   return (
     <>
       <div className=" flex justify-center items-center m-20">
@@ -68,9 +83,7 @@ const ProductLessDetails = () => {
       </div>
       <div className=" grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-5 gap-y-2 justify-items-center ml-5 mr-5">
         {products.map((product, i) => {
-          return (
-            <ProductCard product={product} />
-          );
+          return <ProductCard product={product} />;
         })}
       </div>
     </>

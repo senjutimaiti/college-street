@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Carousels from "../components/Carousels";
 import Categories from "../components/Categories";
@@ -7,7 +7,6 @@ import Footer from "../components/Footer";
 import HomeBanners from "../components/HomeBanners";
 
 const Home = () => {
-
   return (
     <>
       <div className=" bg-white">

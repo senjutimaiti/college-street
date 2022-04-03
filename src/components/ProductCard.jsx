@@ -2,15 +2,14 @@ import React from "react";
 import Button from "../components/Button";
 import ReactStars from "react-rating-stars-component";
 
-const options = {
-  edit: false,
-  color: "gray",
-  activeColor: "#ffd700",
-  value: 2.5,
-  isHalf: true,
-};
-
 const ProductCard = ({ product }) => {
+  const options = {
+    edit: false,
+    color: "gray",
+    activeColor: "#ffd700",
+    value: product.rating,
+    isHalf: true,
+  };
   return (
     <div className=" flex flex-col justify-center items-center 4 relative w-full h-auto my-4 px-4">
       <img
