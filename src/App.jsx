@@ -9,6 +9,7 @@ import Search from "./pages/Search";
 import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs";
 import Cart from "./pages/Cart";
+import ProductDetails from "./pages/ProductDetails";
 
 function App() {
   return (
@@ -41,6 +42,9 @@ function App() {
           </Route>
           <Route exact path="/Cart">
             <Cart />
+          </Route>
+          <Route exact path="/product">
+            <ProductDetails />
           </Route>
         </Switch>
       </Router>
