@@ -16,9 +16,9 @@ import {
 //   DELETE_PRODUCT_REQUEST,
 //   DELETE_PRODUCT_SUCCESS,
 //   DELETE_PRODUCT_FAIL,
-//   PRODUCT_DETAILS_REQUEST,
-//   PRODUCT_DETAILS_FAIL,
-//   PRODUCT_DETAILS_SUCCESS,
+  PRODUCT_DETAILS_REQUEST,
+  PRODUCT_DETAILS_FAIL,
+  PRODUCT_DETAILS_SUCCESS,
 //   NEW_REVIEW_REQUEST,
 //   NEW_REVIEW_SUCCESS,
 //   NEW_REVIEW_FAIL,
@@ -150,24 +150,24 @@ export const getProduct =
 //   }
 // };
 
-// // Get Products Details
-// export const getProductDetails = (id) => async (dispatch) => {
-//   try {
-//     dispatch({ type: PRODUCT_DETAILS_REQUEST });
+// Get Products Details
+export const getProductDetails = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: PRODUCT_DETAILS_REQUEST });
 
-//     const { data } = await axios.get(`/api/v1/product/${id}`);
+    const { data } = await axios.get(`/api/v1/product/${id}`);
 
-//     dispatch({
-//       type: PRODUCT_DETAILS_SUCCESS,
-//       payload: data.product,
-//     });
-//   } catch (error) {
-//     dispatch({
-//       type: PRODUCT_DETAILS_FAIL,
-//       payload: error.response.data.message,
-//     });
-//   }
-// };
+    dispatch({
+      type: PRODUCT_DETAILS_SUCCESS,
+      payload: data.product,
+    });
+  } catch (error) {
+    dispatch({
+      type: PRODUCT_DETAILS_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
 
 // // NEW REVIEW
 // export const newReview = (reviewData) => async (dispatch) => {

@@ -11,19 +11,12 @@ import "../styles/CustomStyles.css";
 import ProductCard from "./ProductCard";
 import { getProduct } from "../actions/productAction";
 import { useSelector, useDispatch } from "react-redux";
-// import { clearErrors } from "../actions/productAction";
-// import { useAlert } from "react-alert";
 
 const ProductLessDetails = () => {
   const dispatch = useDispatch();
-  // // const alert = useAlert();
-  const { loading, error, products } = useSelector((state) => state.products);
+  const { products } = useSelector((state) => state.products);
 
   useEffect(() => {
-    // if (error) {
-    //   alert.error(error);
-    //   dispatch(clearErrors());
-    // }
     dispatch(getProduct());
   }, [dispatch]);
   // const products1 = [
