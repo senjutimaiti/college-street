@@ -18,7 +18,7 @@ const ProductCard = ({ product }) => {
         className=" w-full md:w-[400px] top-0 h-auto hover:cursor-pointer rounded-lg"
       />
       <div className=" text-xl lg:text-2xl mt-2">{product.name}</div>
-      <div>{product.price}</div>
+      <div>₹ {product.price}</div>
       <div>
         <ReactStars {...options} />
       </div>
