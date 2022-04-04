@@ -16,8 +16,8 @@ import { useSelector, useDispatch } from "react-redux";
 
 const ProductLessDetails = () => {
   const dispatch = useDispatch();
-  // const alert = useAlert();
-  const { products } = useSelector((state) => state.products);
+  // // const alert = useAlert();
+  const { loading, error, products } = useSelector((state) => state.products);
 
   useEffect(() => {
     // if (error) {
