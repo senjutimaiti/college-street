@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Navbar from "../components/Navbar";
 import Carousels from "../components/Carousels";
 import Categories from "../components/Categories";
