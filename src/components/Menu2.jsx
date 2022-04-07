@@ -2,12 +2,24 @@ import { FaSearch, FaUserAlt, FaOpencart } from "react-icons/fa";
 import { useHistory } from "react-router-dom";
 import Input from "../components/Input";
 import Button from "../components/Button";
-import { useState } from "react";
+import React, { useState } from "react";
 
 const Menu2 = () => {
   const history = useHistory();
   const [showSearch, setShowSearch] = useState(false);
   const handleClick = () => {
+    setShowSearch(!showSearch);
+  };
+
+  const [keyword, setKeyword] = useState("");
+
+  const searchSubmitHandler = (e) => {
+    e.preventDefault();
+    if (keyword.trim()) {
+      history.push(`/products/${keyword}`);
+    } else {
+      history.push("/products");
+    }
     setShowSearch(!showSearch);
   };
 
@@ -34,12 +46,9 @@ const Menu2 = () => {
 
                 <div onClick={handleClick} className=" absolute top-0 right-3 rotate-45 cursor-pointer text-black text-5xl">+</div>
 
-                <form action="" className=' flex justify-center items-center'>
-                    <Input type="text" placeholder="Start Typing" />
+                <form action="" className=' flex justify-center items-center' onSubmit={searchSubmitHandler}>
+                    <Input type="text" placeholder="Start Typing" onChange={(e) => setKeyword(e.target.value)}/>
                     <Button text = "SEARCH" 
-                    onClick={() => {
-                      history.push("/Search");
-                    }}
                     className="  hover:border-2 hover:border-black h-12 w-[100px] mt-4 border-2 p-3 font-bold text-md hover:text-black hover:bg-white bg-black text-white  transition-all duration-700 "/>
                 </form>
 

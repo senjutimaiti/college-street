@@ -5,11 +5,11 @@ import Login from "./pages/Login";
 import ResetPassword from "./pages/ResetPassword";
 import Register from "./pages/Register";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
-import Search from "./pages/Search";
 import AboutUs from "./pages/AboutUs";
 import ContactUs from "./pages/ContactUs";
 import Cart from "./pages/Cart";
 import ProductDetails from "./pages/ProductDetails";
+import Products from "./pages/Products";
 
 function App() {
   return (
@@ -31,9 +31,6 @@ function App() {
           <Route exact path="/PrivacyPolicy">
             <PrivacyPolicy />
           </Route>
-          <Route exact path="/Search">
-            <Search />
-          </Route>
           <Route exact path="/AboutUs">
             <AboutUs />
           </Route>
@@ -45,6 +42,12 @@ function App() {
           </Route>
           <Route exact path="/product/:id">
             <ProductDetails />
+          </Route>
+          <Route exact path="/products">
+            <Products />
+          </Route>
+          <Route exact path="/products/:keyword">
+            <Products />
           </Route>
         </Switch>
       </Router>

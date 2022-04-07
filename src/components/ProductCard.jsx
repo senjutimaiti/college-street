@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "../components/Button";
 import ReactStars from "react-rating-stars-component";
+import P3 from "../images/P3.jpg";
 import { useHistory } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
@@ -18,7 +19,8 @@ const ProductCard = ({ product }) => {
     <div onClick = {() => { history.push(`/product/${product._id}`)}}>
       <div className=" flex flex-col justify-center items-center 4 relative w-full h-auto my-4 px-4">
         <img
-          src={product.images}
+          src={P3}
+          //src={product.images}
           alt="product"
           className=" w-full md:w-[400px] top-0 h-auto hover:cursor-pointer rounded-lg"
         />
