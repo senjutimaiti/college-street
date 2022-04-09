@@ -11,7 +11,7 @@ const HomeBanners = () => {
         <div className=" flex flex-col justify-center items-center m-20">
           <h3 className=" text-2xl my-2">We provide fresh groceries.</h3>
           <p className=" text-lg text-slate-400 tracking-wider my-2 text-center">Looks so Good on the Outside, It'll Make You Feel Good Inside</p>
-          <Button text = "SHOP NOW" className="  hover:border-2 hover:border-black h-16 w-[300px] mt-3 mb-5 font-bold text-md hover:text-black hover:bg-white bg-black text-white  transition-all duration-700 "/>
+          <Button text = "SHOP NOW" className="  hover:border-2 hover:border-black h-16 w-[300px] mt-3 mb-5 font-bold text-md hover:text-black hover:bg-white bg-black text-white  transition-all duration-700" onClick = {() => { history.push("/products")}}/>
         </div>
         <div className=" block md:flex justify-center items-center w-screen h-auto mt-20">
           <div className=" flex justify-center relative w-screen md:w-1/2 ">

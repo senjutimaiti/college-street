@@ -47,7 +47,7 @@ const Menu2 = () => {
                 <div onClick={handleClick} className=" absolute top-0 right-3 rotate-45 cursor-pointer text-black text-5xl">+</div>
 
                 <form action="" className=' flex justify-center items-center' onSubmit={searchSubmitHandler}>
-                    <Input type="text" placeholder="Start Typing" onChange={(e) => setKeyword(e.target.value)}/>
+                    <Input type="text" placeholder="Search a Product" onChange={(e) => setKeyword(e.target.value)}/>
                     <Button text = "SEARCH" 
                     className="  hover:border-2 hover:border-black h-12 w-[100px] mt-4 border-2 p-3 font-bold text-md hover:text-black hover:bg-white bg-black text-white  transition-all duration-700 "/>
                 </form>

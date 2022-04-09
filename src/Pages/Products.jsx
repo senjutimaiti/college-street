@@ -11,21 +11,21 @@ import Slider from "@material-ui/core/Slider";
 import Typography from '@mui/material/Typography';
 
 const Products = () => {
+    
     const categories = [
         "Fruits",
         "Vegetables",
-        "Dairy Product",
+        "Dairy Products",
         "Meat",
       ];
 
   const dispatch = useDispatch();
-  const { keyword } = useParams();
+  let { keyword } = useParams();
 //   const alert = useAlert();
 
   const [currentPage, setCurrentPage] = useState(1);
   const [price, setPrice] = useState([0, 25000]);
   const [category, setCategory] = useState("");
-
   const [ratings, setRatings] = useState(0);
 
   const {
@@ -42,7 +42,7 @@ const Products = () => {
   const priceHandler = (event, newPrice) => {
     setPrice(newPrice);
   };
-  let count = filteredProductsCount;
+  //let count = filteredProductsCount;
 
   useEffect(() => {
     // if (error) {
@@ -55,73 +55,79 @@ const Products = () => {
 
   return (
     <>
-      <div className=" bg-white">
+      <div className=" bg-white pb-96">
         <Navbar />
-        <h2 className=" flex justify-center items-center text-5xl text-black font-black my-32">Products</h2>
+        <h2 className=" flex justify-center items-center text-5xl text-black font-black mt-32 mb-10">Shop</h2>
+        <div className=" flex justify-center items-center">
+          <div className=" w-1/4">
 
-          <div className=" grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-5 gap-y-2 justify-items-center ml-5 mr-5">
-            {products &&
-              products.map((product) => (
-                <ProductCard key={product._id} product={product} />
-              ))}
-          </div>
-
-          <div className="filterBox">
-            <Typography>Price</Typography>
-            <Slider
-              value={price}
-              onChange={priceHandler}
-              valueLabelDisplay="auto"
-              aria-labelledby="range-slider"
-              min={0}
-              max={25000}
-            />
-
-            <Typography>Categories</Typography>
-            <ul className="categoryBox">
-              {categories.map((category) => (
-                <li
-                  className="category-link"
-                  key={category}
-                  onClick={() => setCategory(category)}
-                >
-                  {category}
-                </li>
-              ))}
-            </ul>
-
-            <fieldset>
-              <Typography component="legend">Ratings Above</Typography>
+            <div className="filterBox">
+              <Typography>Price</Typography>
               <Slider
-                value={ratings}
-                onChange={(e, newRating) => {
-                  setRatings(newRating);
-                }}
-                aria-labelledby="continuous-slider"
+                value={price}
+                onChange={priceHandler}
                 valueLabelDisplay="auto"
+                aria-labelledby="range-slider"
                 min={0}
-                max={5}
+                max={25000}
               />
-            </fieldset>
-          </div>
-          {resultPerPage < productsCount && (
-            <div className="paginationBox">
-              <Pagination
-                activePage={currentPage}
-                itemsCountPerPage={resultPerPage}
-                totalItemsCount={productsCount}
-                onChange={setCurrentPageNo}
-                nextPageText="Next"
-                prevPageText="Prev"
-                firstPageText="1st"
-                lastPageText="Last"
-                itemClass="page-item"
-                linkClass="page-link"
-                activeClass="pageItemActive"
-                activeLinkClass="pageLinkActive"
-              />
+
+              <Typography>Categories</Typography>
+              <ul className="categoryBox">
+                {categories.map((category) => (
+                  <li
+                    className="category-link"
+                    key={category}
+                    onClick={() => setCategory(category)}
+                  >
+                    {category}
+                  </li>
+                ))}
+              </ul>
+
+              <fieldset>
+                <Typography component="legend">Ratings Above</Typography>
+                <Slider
+                  value={ratings}
+                  onChange={(e, newRating) => {
+                    setRatings(newRating);
+                  }}
+                  aria-labelledby="continuous-slider"
+                  valueLabelDisplay="auto"
+                  min={0}
+                  max={5}
+                />
+              </fieldset>
             </div>
+          </div>
+          <div className=" w-3/4">
+            <div className=" grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-2 justify-items-center mx-5">
+              {products &&
+                products.map((product) => (
+                  <ProductCard key={product._id} product={product} />
+                  ))}
+            </div>      
+
+            {resultPerPage < productsCount && (
+              <div className="paginationBox">
+                <Pagination
+                  activePage={currentPage}
+                  itemsCountPerPage={resultPerPage}
+                  totalItemsCount={productsCount}
+                  onChange={setCurrentPageNo}
+                  nextPageText="Next"
+                  prevPageText="Prev"
+                  firstPageText="1st"
+                  lastPageText="Last"
+                  itemClass="page-item"
+                  linkClass="page-link"
+                  activeClass="pageItemActive"
+                  activeLinkClass="pageLinkActive"
+                  />
+              </div>
           )}
+          </div>      
+        </div> 
       </div>
       <Footer />
     </>
