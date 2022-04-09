@@ -4,8 +4,10 @@ import C2 from "../images/C2.jpg";
 import C3 from "../images/C3.jpg";
 import C4 from "../images/C4.jpg";
 import "../styles/CustomStyles.css";
+import { useHistory } from "react-router-dom";
 
 const Categories = () => {
+  const history = useHistory();
   const categories = [
     {
       id: "asdfasdf",
@@ -41,7 +43,9 @@ const Categories = () => {
         {categories.map((category, i) => {
           return (
             <div className=" m-4 relative drop-shadow-xl">
-              <div className=" z-20 absolute top-10 left-3 text-md lg:text-2xl hover-underline-animation hover:cursor-pointer">
+              <div className=" z-20 absolute top-10 left-3 text-md lg:text-2xl hover-underline-animation hover:cursor-pointer"
+              onClick={() => {history.push(`/products?category=${category.name}`)}}
+              >
                 {category.name}
               </div>
               <img

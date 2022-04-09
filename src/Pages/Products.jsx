@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import { useSelector, useDispatch } from "react-redux";
 import { getProduct } from "../actions/productAction";
 import ProductCard from "../components/ProductCard";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import Pagination from "react-js-pagination";
 import "../styles/CustomStyles.css";
 import Slider from "@material-ui/core/Slider";
@@ -21,6 +21,7 @@ const Products = () => {
 
   const dispatch = useDispatch();
   let { keyword } = useParams();
+  const { search } = useLocation();
 //   const alert = useAlert();
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -43,6 +44,13 @@ const Products = () => {
     setPrice(newPrice);
   };
   //let count = filteredProductsCount;
+
+  useEffect(() => {
+    const query = new URLSearchParams(search);
+    if (query.get("category")){
+      setCategory(query.get("category"));
+    }
+  },[]);
 
   useEffect(() => {
     // if (error) {
