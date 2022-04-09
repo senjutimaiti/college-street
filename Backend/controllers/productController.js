@@ -11,16 +11,18 @@ exports.getAllProducts = catchAsyncErrors(async (req, res, next) => {
   const apiFeature = new ApiFeatures(Product.find(), req.query)
     .search()
     .filter()
-    .pagination(resultPerPage);
+    //.pagination(resultPerPage);
   
-  const products = await apiFeature.query;
+  let products = await apiFeature.query;
+  let filteredProductsCount = products.length;
+  apiFeature.pagination(resultPerPage);
 
   res.status(200).json({
     success: true,
     products,
     productsCount,
     resultPerPage,
-    //filteredProductsCount,
+    filteredProductsCount,
   });
 });
 
@@ -103,8 +105,10 @@ exports.createProductReview = catchAsyncErrors(async (req, res, next) => {
 
   if (isReviewed) {
     product.reviews.forEach((rev) => {
-      if (rev.user.toString() === req.user._id.toString())
-        (rev.rating = rating), (rev.comment = comment);
+      if (rev.user.toString() === req.user._id.toString()){
+        rev.rating = rating ;
+        rev.comment = comment;
+      }
     });
   } else {
     product.reviews.push(review);

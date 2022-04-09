@@ -33,7 +33,7 @@ const Products = () => {
     products,
     productsCount,
     resultPerPage,
-    //filteredProductsCount,
+    filteredProductsCount,
   } = useSelector((state) => state.products);
 
   const setCurrentPageNo = (e) => {
@@ -43,7 +43,7 @@ const Products = () => {
   const priceHandler = (event, newPrice) => {
     setPrice(newPrice);
   };
-  //let count = filteredProductsCount;
+  let count = filteredProductsCount;
 
   useEffect(() => {
     const query = new URLSearchParams(search);
@@ -116,7 +116,7 @@ const Products = () => {
                   ))}
             </div>      
 
-            {resultPerPage < productsCount && (
+            {resultPerPage < count && (
               <div className="paginationBox">
                 <Pagination
                   activePage={currentPage}
