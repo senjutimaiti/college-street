@@ -1,6 +1,6 @@
 import React from "react";
 
-const Input = ({ label, type, placeholder, onChange }) => {
+const Input = ({ label, type, placeholder, onChange, value }) => {
   return (
     <div >
       <label htmlFor={label} className="text-xl text-left ">
@@ -9,7 +9,7 @@ const Input = ({ label, type, placeholder, onChange }) => {
       <br />
       <input
         type={type}
-        //value={value}
+        value={value}
         placeholder={placeholder}
         className={" border-2 border-slate-200 h-12 md:w-[500px] pl-3 mt-2 mb-5 w-[300px]"}
         //id={label}
