@@ -32,7 +32,7 @@ const Products = () => {
     products,
     productsCount,
     resultPerPage,
-    filteredProductsCount,
+    //filteredProductsCount,
   } = useSelector((state) => state.products);
 
   const setCurrentPageNo = (e) => {
@@ -58,8 +58,8 @@ const Products = () => {
       <div className=" bg-white pb-96">
         <Navbar />
         <h2 className=" flex justify-center items-center text-5xl text-black font-black mt-32 mb-10">Shop</h2>
-        <div className=" flex justify-center items-center">
-          <div className=" w-1/4">
+        <div className=" block md:flex md:justify-center md:items-center">
+          <div className=" w-full md:w-1/4 px-20 ">
 
             <div className="filterBox">
               <Typography>Price</Typography>
@@ -100,8 +100,8 @@ const Products = () => {
               </fieldset>
             </div>
           </div>
-          <div className=" w-3/4">
-            <div className=" grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-2 justify-items-center mx-5">
+          <div className=" w-full md:w-3/4">
+            <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-2 justify-items-center mx-5">
               {products &&
                 products.map((product) => (
                   <ProductCard key={product._id} product={product} />
