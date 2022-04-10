@@ -5,10 +5,12 @@ import Footer from "../components/Footer";
 import Button from "../components/Button";
 import { useDispatch } from "react-redux";
 import { logout } from "../actions/userAction";
+import { useHistory } from "react-router-dom";
 
-const Profile = ({ history }) => {
+const Profile = () => {
   const { user, isAuthenticated } = useSelector((state) => state.user);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(() => {
     if (isAuthenticated === false) {
