@@ -33,7 +33,7 @@ const Menu2 = () => {
           <FaUserAlt title="User"
             className=" w-5 h-auto hover:text-zinc-400 m-5 hover:cursor-pointer"
             onClick={() => {
-              history.push("/Login");
+              history.push("/login");
             }}
           />
         </div>

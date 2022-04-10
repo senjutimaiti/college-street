@@ -38,13 +38,13 @@ function App() {
             <Route exact path="/">
               <Home />
             </Route>
-            <Route exact path="/PrivacyPolicy">
+            <Route exact path="/privacy-policy">
               <PrivacyPolicy />
             </Route>
-            <Route exact path="/AboutUs">
+            <Route exact path="/about-us">
               <AboutUs />
             </Route>
-            <Route exact path="/ContactUs">
+            <Route exact path="/contact-us">
               <ContactUs />
             </Route>
             <Route exact path="/cart">
@@ -63,25 +63,25 @@ function App() {
           </Switch>
         ) : (
           <Switch>
-            <Route exact path="/Login">
+            <Route exact path="/login">
               <Login />
             </Route>
             <Route exact path="/">
               <Home />
             </Route>
-            <Route exact path="/ForgotPassword">
+            <Route exact path="/forgot-password">
               <ForgotPassword />
             </Route>
-            <Route exact path="/Register">
+            <Route exact path="/register">
               <Register />
             </Route>
-            <Route exact path="/PrivacyPolicy">
+            <Route exact path="/privacy-policy">
               <PrivacyPolicy />
             </Route>
-            <Route exact path="/AboutUs">
+            <Route exact path="/about-us">
               <AboutUs />
             </Route>
-            <Route exact path="/ContactUs">
+            <Route exact path="/contact-us">
               <ContactUs />
             </Route>
             <Route exact path="/cart">

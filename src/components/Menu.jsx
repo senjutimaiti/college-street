@@ -41,7 +41,7 @@ const Menu = ({ className }) => {
           <div
             className=" p-4 hover:text-zinc-400 transition-all duration-750 ease-in hover:cursor-pointer"
             onClick={() => {
-              history.push("/AboutUs");
+              history.push("/about-us");
             }}
           >
             About Us
@@ -49,7 +49,7 @@ const Menu = ({ className }) => {
           <div
             className=" p-4 hover:text-zinc-400 transition-all duration-750 ease-in hover:cursor-pointer"
             onClick={() => {
-              history.push("/ContactUs");
+              history.push("/contact-us");
             }}
           >
             Contact Us
@@ -76,7 +76,7 @@ const Menu = ({ className }) => {
         <div
           className=" p-6 hover:text-zinc-400 transition-all duration-750 ease-in font-extrabold hover:cursor-pointer"
           onClick={() => {
-            history.push("/AboutUs");
+            history.push("/about-us");
           }}
         >
           About Us
@@ -84,7 +84,7 @@ const Menu = ({ className }) => {
         <div
           className=" p-6 hover:text-zinc-400 transition-all duration-750 ease-in font-extrabold hover:cursor-pointer"
           onClick={() => {
-            history.push("/ContactUs");
+            history.push("/contact-us");
           }}
         >
           Contact Us

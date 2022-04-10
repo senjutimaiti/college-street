@@ -10,25 +10,25 @@ const Categories = () => {
   const history = useHistory();
   const categories = [
     {
-      id: "asdfasdf",
+      id: "a",
       name: "Vegetables",
       price: "Rs 70",
       images: C1,
     },
     {
-      id: "asdfasdf",
+      id: "b",
       name: "Fruits",
       price: "Rs 35",
       images: C2,
     },
     {
-      id: "asdfasdf",
+      id: "c",
       name: "Dairy Products",
       price: "Rs 35",
       images: C3,
     },
     {
-      id: "asdfasdf",
+      id: "d",
       name: "Meat",
       price: "Rs 120",
       images: C4,

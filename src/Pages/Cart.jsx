@@ -58,7 +58,7 @@ const Cart = () => {
           </span>
           <span
             onClick={() => {
-              history.push("/Cart");
+              history.push("/cart");
             }}
           >
             {" "}

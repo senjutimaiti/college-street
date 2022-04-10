@@ -13,7 +13,7 @@ const ResetPassword = () => {
       <div className=" bg-white pb-40">
         <Navbar />
         <div className=" text-center w-screen h-auto text-lg text-black mt-28 hover:cursor-pointer font-light">
-            <span onClick = {() => { history.push("/")}}>Home /</span><span onClick = {() => { history.push("/ForgotPassword")}}> Reset Password</span>
+            <span onClick = {() => { history.push("/")}}>Home /</span><span onClick = {() => { history.push("/forgot-password")}}> Reset Password</span>
           </div> 
         <div className="text-center w-screen h-auto text-5xl text-black mt-6 font-bold">
           Reset Password
@@ -31,7 +31,7 @@ const ResetPassword = () => {
           </div>
           <Button text = "CANCEL" 
           onClick={() => {
-            history.push("/Login");
+            history.push("/login");
           }}
           className="  border-2 border-slate-200 h-16 md:w-[500px] w-[300px] mt-2 mb-5 font-bold text-md text-black  hover:bg-black hover:text-white hover:border-black transition-all duration-700 "/>
         </div>

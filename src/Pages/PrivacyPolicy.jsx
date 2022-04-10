@@ -12,7 +12,7 @@ const PrivacyPolicy = () => {
         <Navbar />
         <div className=" bg-slate-200">
           <div className=" text-center w-screen h-auto text-lg text-black pt-28 hover:cursor-pointer font-light">
-              <span onClick = {() => { history.push("/")}}>Home /</span><span onClick = {() => { history.push("/PrivacyPolicy")}}> Privacy Policy</span>
+              <span onClick = {() => { history.push("/")}}>Home /</span><span onClick = {() => { history.push("/privacy-policy")}}> Privacy Policy</span>
             </div> 
           <div className="text-center w-screen h-auto text-5xl text-black mt-6 font-black pb-12">
             Privacy Policy
@@ -43,10 +43,6 @@ const PrivacyPolicy = () => {
             not be guaranteed. For this reason, every data subject is free to transfer personal data to us via 
             alternative means, e.g. by telephone.
             </p>
-          {/* <p className="text-xl fontOswald text-left text-black mb-5 font-bold ">
-            1. Definitions
-            </p>
-          <p> */}
         </div>
       </div>
       <Footer />

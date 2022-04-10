@@ -21,7 +21,7 @@ const HomeBanners = () => {
               <p className="text-right text-xl text-white">Head Office<br />
                 16 Boulevard Saint-Germain<br />
                 75005 Paris</p><br />
-              <p onClick = {() => { history.push("/ContactUs")}}
+              <p onClick = {() => { history.push("/contact-us")}}
               className="text-right text-xl text-white hover:cursor-pointer underline underline-offset-4">Contact Us</p>
             </div>
           </div>
@@ -29,7 +29,7 @@ const HomeBanners = () => {
             <img src={ban5} alt={"banner"}/>
             <div className=" z-10 absolute top-4 right-10">
               <h3 className="text-right text-3xl my-10 text-black">Follow Our Store <br />On Instagram</h3>
-              <p onClick = {() => { history.push("/ContactUs")}}
+              <p onClick = {() => { history.push("/contact-us")}}
               className="text-right text-xl text-black hover:cursor-pointer underline underline-offset-4">@ohfood22</p>
             </div>
           </div>
