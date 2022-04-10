@@ -5,15 +5,14 @@ import Input from "../components/Input";
 import Button from "../components/Button";
 import Footer from "../components/Footer";
 import { useDispatch, useSelector } from "react-redux";
-import { clearErrors, login, register } from "../actions/userAction";
+import { clearErrors, login } from "../actions/userAction";
 
 const Login = () => {
   const history = useHistory();
 
   const dispatch = useDispatch();
-  // const alert = useAlert();
 
-  const { isAuthenticated } = useSelector(
+  const { error, isAuthenticated } = useSelector(
     (state) => state.user
   );
 
@@ -26,10 +25,17 @@ const Login = () => {
   }
 
   useEffect(() => {
+    if(error) {
+      alert(error);
+      setLoginEmail("");
+      setLoginPassword("");
+      dispatch(clearErrors());
+    }
+    
     if (isAuthenticated) {
       history.push("/account");
     }
-  }, [dispatch, history, isAuthenticated]);
+  }, [dispatch, history, isAuthenticated, error]);
 
   return (
     <>
@@ -45,7 +51,7 @@ const Login = () => {
           <Input type="text" label="Email" placeholder="Email" value={loginEmail} onChange={(e) => setLoginEmail(e.target.value)}/>
           <Input type="password" label="Password" placeholder="Password" value={loginPassword} onChange={(e) => setLoginPassword(e.target.value)}/>
           <p onClick={() => {
-            history.push("/ResetPassword");
+            history.push("/ForgotPassword");
           }}
           className="text-xl text-left mb-3 hover:cursor-pointer">Forgot your password?</p>
           <Button text = "LOG IN" className="  hover:border-2 hover:border-black h-16 md:w-[500px] w-[300px] mt-2 mb-5 font-bold text-md hover:text-black hover:bg-white bg-black text-white  transition-all duration-700 "

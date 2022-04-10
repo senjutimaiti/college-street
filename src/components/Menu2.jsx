@@ -38,7 +38,7 @@ const Menu2 = () => {
           />
         </div>
         <div>
-          <FaOpencart onClick = {() => { history.push("/Cart")}} title="Cart" className=" w-5 h-auto hover:text-zinc-400 m-5 hover:cursor-pointer" />
+          <FaOpencart onClick = {() => { history.push("/cart")}} title="Cart" className=" w-5 h-auto hover:text-zinc-400 m-5 hover:cursor-pointer" />
         </div>
       </div>
       <div className={(showSearch ? "flex" : "hidden") + " bg-black/70 w-full h-full fixed justify-center items-center top-0"}>

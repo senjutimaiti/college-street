@@ -6,7 +6,7 @@ import ReactStars from "react-rating-stars-component";
 import Button from "../components/Button";
 import { useSelector, useDispatch } from "react-redux";
 import {
-    // clearErrors,
+    clearErrors,
     getProductDetails,
     // newReview,
   } from "../actions/productAction";
@@ -17,7 +17,7 @@ const ProductDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
 
-  const { product } = useSelector(
+  const { product, error } = useSelector(
     (state) => state.productDetails
   );
 
@@ -73,22 +73,13 @@ const ProductDetails = () => {
 //   };
 
  useEffect(() => {
-    // if (error) {
-    //   alert.error(error);
-    //   dispatch(clearErrors());
-    // }
+    if (error) {
+      alert(error);
+      dispatch(clearErrors());
+    }
 
-//     if (reviewError) {
-//       alert.error(reviewError);
-//       dispatch(clearErrors());
-//     }
-
-//     if (success) {
-//       alert.success("Review Submitted Successfully");
-//       dispatch({ type: NEW_REVIEW_RESET });
-//     }
     dispatch(getProductDetails(id));
-}, [dispatch, id]);
+}, [dispatch, id, error]);
 
   return (
     <>

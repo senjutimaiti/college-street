@@ -9,6 +9,7 @@ import Pagination from "react-js-pagination";
 import "../styles/CustomStyles.css";
 import Slider from "@material-ui/core/Slider";
 import Typography from '@mui/material/Typography';
+import { clearErrors } from "../actions/productAction";
 
 const Products = () => {
     
@@ -22,7 +23,6 @@ const Products = () => {
   const dispatch = useDispatch();
   let { keyword } = useParams();
   const { search } = useLocation();
-//   const alert = useAlert();
 
   const [currentPage, setCurrentPage] = useState(1);
   const [price, setPrice] = useState([0, 25000]);
@@ -34,6 +34,7 @@ const Products = () => {
     productsCount,
     resultPerPage,
     filteredProductsCount,
+    error,
   } = useSelector((state) => state.products);
 
   const setCurrentPageNo = (e) => {
@@ -50,16 +51,16 @@ const Products = () => {
     if (query.get("category")){
       setCategory(query.get("category"));
     }
-  },[]);
+  },[search]);
 
   useEffect(() => {
-    // if (error) {
-    //   alert.error(error);
-    //   dispatch(clearErrors());
-    // }
+    if (error) {
+      alert(error);
+      dispatch(clearErrors());
+    }
 
     dispatch(getProduct(keyword, currentPage, price, category, ratings));
-  }, [dispatch, keyword, currentPage, price, category, ratings]);
+  }, [dispatch, keyword, currentPage, price, category, ratings, error]);
 
   return (
     <>

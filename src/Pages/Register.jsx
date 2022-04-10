@@ -12,6 +12,10 @@ const Register = () => {
   
   const dispatch = useDispatch();
 
+  const { error, isAuthenticated } = useSelector(
+    (state) => state.user
+  );
+
   const [user, setUser] = useState({
     name: "",
     email: "",
@@ -35,6 +39,22 @@ const Register = () => {
       setUser({ ...user, [e.target.name]: e.target.value });
   };
 
+  useEffect(() => {
+    if(error) {
+      alert(error);
+      setUser({
+        name: "",
+        email: "",
+        password: "",
+      });
+      dispatch(clearErrors());
+    }
+
+    if (isAuthenticated) {
+      history.push("/account");
+    }
+  }, [dispatch, history, isAuthenticated, error]);
+
   return (
     <>
       <div className=" bg-white pb-40">
@@ -45,10 +65,10 @@ const Register = () => {
         <div className="text-center w-screen h-auto text-5xl text-black mt-6 font-bold mb-12">
           Register
         </div>
-        <div className=" flex flex-col h-auto w-screen justify-center items-center">
-          <Input type="text" label= "Name" placeholder="Name" value={name} onChange={registerDataChange}/>
-          <Input type="text" label="Email" placeholder="Email" value={email} onChange={registerDataChange}/>
-          <Input type="password" label="Password" placeholder="Password" value={password} onChange={registerDataChange}/>
+        <form className=" flex flex-col h-auto w-screen justify-center items-center">
+          <Input type="text" label= "Name" name="name" placeholder="Name" value={name} onChange={registerDataChange}/>
+          <Input type="text" label="Email" name="email" placeholder="Email" value={email} onChange={registerDataChange}/>
+          <Input type="password" label="Password" name="password" placeholder="Password" value={password} onChange={registerDataChange}/>
           <p className="text-md text-left text-slate-400 mb-3 md:w-[500px] w-[300px] font-light">Your personal data will
           be used to support your experience throughout this website, to manage access to your account, 
           and for other purposes described in our
@@ -70,7 +90,7 @@ const Register = () => {
             history.push("/Login");
           }}
           className="  border-2 border-slate-200 h-16 md:w-[500px] w-[300px] mt-2 mb-5 font-bold text-md text-black  hover:bg-black hover:text-white hover:border-black transition-all duration-700 "/>
-        </div>
+        </form>
       </div>
       <Footer />
     </>

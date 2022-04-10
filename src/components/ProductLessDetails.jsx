@@ -9,16 +9,20 @@ import React, { useEffect } from "react";
 // import P8 from "../images/P8.jpg";
 import "../styles/CustomStyles.css";
 import ProductCard from "./ProductCard";
-import { getProduct } from "../actions/productAction";
+import { getProduct, clearErrors } from "../actions/productAction";
 import { useSelector, useDispatch } from "react-redux";
 
 const ProductLessDetails = () => {
   const dispatch = useDispatch();
-  const { products } = useSelector((state) => state.products);
+  const { products, error } = useSelector((state) => state.products);
 
   useEffect(() => {
+    if (error) {
+      alert(error);
+      dispatch(clearErrors());
+    }
     dispatch(getProduct());
-  }, [dispatch]);
+  }, [dispatch, error]);
   // const products1 = [
   //   {
   //     id: "asdfasdf",
