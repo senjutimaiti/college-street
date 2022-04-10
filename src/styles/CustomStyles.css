@@ -99,12 +99,10 @@
 .category-link {
   list-style: none;
   color: rgba(0, 0, 0, 0.61);
-  font: 400 0.8vmax ;
-  margin: 0.4vmax;
   cursor: pointer;
   transition: all 0.5s;
 }
 .category-link:hover {
-  color: tomato;
+  color: rgb(10, 10, 10);
 }
 
