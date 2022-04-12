@@ -27,7 +27,7 @@ const Navbar = () => {
       <img
         src={logo}
         alt="logo"
-        className=" w-[80px] h-auto align-middle absolute left-1/2 ml-[-40px]"
+        className=" w-[100px] h-auto align-middle absolute left-1/2 ml-[-40px]"
       />
       <Menu2 />
     </div>
