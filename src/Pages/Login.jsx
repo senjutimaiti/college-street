@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import Footer from "../components/Footer";
@@ -10,6 +10,7 @@ import Loader from "../components/Loader";
 
 const Login = () => {
   const history = useHistory();
+  // const { search } = useLocation();
 
   const dispatch = useDispatch();
 
@@ -24,6 +25,9 @@ const Login = () => {
     e.preventDefault();
     dispatch(login(loginEmail, loginPassword));
   }
+
+  // const query = new URLSearchParams(search);
+  // const redirect = query? query.get("redirect") : "/account";
 
   useEffect(() => {
     if(error && error!=="Please Login to access this resource") {

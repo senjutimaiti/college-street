@@ -13,6 +13,7 @@ const Cart = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);
+  const { isAuthenticated } = useSelector((state) => state.user);
 
   const increaseQuantity = (id, quantity, stock) => {
     const newQty = quantity + 1;
@@ -35,7 +36,11 @@ const Cart = () => {
   };
 
   const checkoutHandler = () => {
-    history.push("/login?redirect=shipping");
+    if(isAuthenticated){
+      history.push("/shipping");
+    } else {
+      history.push("/login");
+    }
   };
 
   return (
