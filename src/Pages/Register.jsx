@@ -40,7 +40,7 @@ const Register = () => {
   };
 
   useEffect(() => {
-    if(error) {
+    if(error && error!=="Please Login to access this resource") {
       alert(error);
       setUser({
         name: "",

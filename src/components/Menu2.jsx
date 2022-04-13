@@ -3,8 +3,11 @@ import { useHistory } from "react-router-dom";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
 const Menu2 = () => {
+  const { cartItems } = useSelector((state) => state.cart);
+
   const history = useHistory();
   const [showSearch, setShowSearch] = useState(false);
   const handleClick = () => {
@@ -37,8 +40,8 @@ const Menu2 = () => {
             }}
           />
         </div>
-        <div>
-          <FaOpencart onClick = {() => { history.push("/cart")}} title="Cart" className=" w-5 h-auto hover:text-zinc-400 m-5 hover:cursor-pointer" />
+        <div className=" flex justify-center items-center hover:text-zinc-400" onClick = {() => { history.push("/cart")}}>
+          <FaOpencart title="Cart" className=" w-5 h-auto my-5 ml-5 hover:cursor-pointer" /><span className=" w-5 h-auto mr-5">({`${cartItems.length}`})</span>
         </div>
       </div>
       <div className={(showSearch ? "flex" : "hidden") + " bg-black/70 w-full h-full fixed justify-center items-center top-0"}>
