@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import P3 from "../images/P3.jpg";
@@ -10,6 +10,7 @@ import {
     getProductDetails,
     // newReview,
   } from "../actions/productAction";
+import { addItemsToCart } from "../actions/cartAction";
 import { useParams } from "react-router-dom";
 
 const ProductDetails = () => {
@@ -32,29 +33,29 @@ const ProductDetails = () => {
     precision: 0.5,
   };
 
-//   const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(1);
 //   const [open, setOpen] = useState(false);
 //   const [rating, setRating] = useState(0);
 //   const [comment, setComment] = useState("");
 
-//   const increaseQuantity = () => {
-//     if (product.Stock <= quantity) return;
+  const increaseQuantity = () => {
+    if (product.Stock <= quantity) return;
 
-//     const qty = quantity + 1;
-//     setQuantity(qty);
-//   };
+    const qty = quantity + 1;
+    setQuantity(qty);
+  };
 
-//   const decreaseQuantity = () => {
-//     if (1 >= quantity) return;
+  const decreaseQuantity = () => {
+    if (1 >= quantity) return;
 
-//     const qty = quantity - 1;
-//     setQuantity(qty);
-//   };
+    const qty = quantity - 1;
+    setQuantity(qty);
+  };
 
-//   const addToCartHandler = () => {
-//     dispatch(addItemsToCart(id, quantity));
-//     alert.success("Item Added To Cart");
-//   };
+  const addToCartHandler = () => {
+    dispatch(addItemsToCart(id, quantity));
+    alert("Item Added To Cart");
+  };
 
 //   const submitReviewToggle = () => {
 //     open ? setOpen(false) : setOpen(true);
@@ -93,6 +94,11 @@ const ProductDetails = () => {
             <div>
               <ReactStars {...options} />
             </div>
+            <div className=" flex justify-left items-center">
+              <button onClick={decreaseQuantity} className=" bg-slate-400 px-3 cursor-pointer text-white transition-all duration-500 hover:bg-slate-700">-</button>
+              <input readOnly type="number" value={quantity} className=" p-2 text-center font-bold w-14"/>
+              <button onClick={increaseQuantity} className=" bg-slate-400 px-3 cursor-pointer text-white transition-all duration-500 hover:bg-slate-700">+</button>
+            </div>
             <p>
                   Status:
                   <b className={product.Stock < 1 ? " text-red-500" : " text-green-600"}>
@@ -103,6 +109,7 @@ const ProductDetails = () => {
               {product.description}
             </p>
             <Button
+              onClick={addToCartHandler}
               text="ADD TO CART"
               className=" border-2 rounded-lg border-black w-full p-2 font-bold text-md text-black bg-white hover:bg-black hover:text-white  transition-all duration-700 "
             />
