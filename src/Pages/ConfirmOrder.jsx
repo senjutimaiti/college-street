@@ -37,11 +37,11 @@ const ConfirmOrder = () => {
       tax,
       totalPrice,
     };
-    
+
     sessionStorage.setItem("orderInfo", JSON.stringify(data));
 
     const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
-  
+
     const order = {
       shippingInfo,
       orderItems: cartItems,
@@ -62,13 +62,13 @@ const ConfirmOrder = () => {
         // alert(response.razorpay_order_id);
         // alert(response.razorpay_signature);
         alert("Payment Successful");
-        order.paymentInfo={
+        order.paymentInfo = {
           id: response.razorpay_order_id,
           status: "Paid",
-        }
+        };
         dispatch(createOrder(order));
         history.push("/orders");
-      }
+      },
     };
 
     var rzp1 = new Razorpay(options);
@@ -82,7 +82,7 @@ const ConfirmOrder = () => {
       // alert(response.error.metadata.order_id);
       // alert(response.error.metadata.payment_id);
     });
-    
+
     rzp1.open();
 
     // history.push("/process/payment");

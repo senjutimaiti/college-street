@@ -135,9 +135,9 @@ exports.razorpayOrder = async (req, res) => {
     key_id: "rzp_test_UL4sNHtnJ2YsGd",
     key_secret: "uffeyXQrhTecBerXGZujrbFB",
   });
-
+  console.log(req);
   const order = await instance.orders.create({
-    amount: 50000,
+    amount: 800000,
     currency: "INR",
     receipt: "receipt#1",
     notes: {
@@ -146,7 +146,7 @@ exports.razorpayOrder = async (req, res) => {
     },
   });
 
-  res.json({ 
-    id: order.id, 
+  res.json({
+    id: order.id,
   });
 };
