@@ -1,6 +1,6 @@
 import React from "react";
 import CheckoutSteps from "../components/CheckoutSteps";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useHistory } from "react-router-dom";
@@ -8,8 +8,10 @@ import P3 from "../images/P3.jpg";
 import Button from "../components/Button";
 import axios from "axios";
 import useRazorpay from "react-razorpay";
+import { createOrder } from "../actions/orderAction";
 
 const ConfirmOrder = () => {
+  const dispatch = useDispatch();
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
   const history = useHistory();
@@ -35,29 +37,52 @@ const ConfirmOrder = () => {
       tax,
       totalPrice,
     };
-
+    
     sessionStorage.setItem("orderInfo", JSON.stringify(data));
+
+    const orderInfo = JSON.parse(sessionStorage.getItem("orderInfo"));
+  
+    const order = {
+      shippingInfo,
+      orderItems: cartItems,
+      itemsPrice: orderInfo.subtotal,
+      taxPrice: orderInfo.tax,
+      shippingPrice: orderInfo.shippingCharges,
+      totalPrice: orderInfo.totalPrice,
+    };
 
     const { data: orderData } = await axios.post("/api/v1/order/razorpay");
 
-    var options = {
+    const options = {
       key: "rzp_test_UL4sNHtnJ2YsGd",
       order_id: orderData.id,
-      callback_url: "http://localhost:3000/payment-success",
+      amount: "828282",
+      handler: (response) => {
+        // alert(response.razorpay_payment_id);
+        // alert(response.razorpay_order_id);
+        // alert(response.razorpay_signature);
+        alert("Payment Successful");
+        order.paymentInfo={
+          id: response.razorpay_order_id,
+          status: "Paid",
+        }
+        dispatch(createOrder(order));
+        history.push("/orders");
+      }
     };
 
     var rzp1 = new Razorpay(options);
 
     rzp1.on("payment.failed", function (response) {
-      alert(response.error.code);
+      // alert(response.error.code);
       alert(response.error.description);
-      alert(response.error.source);
-      alert(response.error.step);
-      alert(response.error.reason);
-      alert(response.error.metadata.order_id);
-      alert(response.error.metadata.payment_id);
+      // alert(response.error.source);
+      // alert(response.error.step);
+      // alert(response.error.reason);
+      // alert(response.error.metadata.order_id);
+      // alert(response.error.metadata.payment_id);
     });
-
+    
     rzp1.open();
 
     // history.push("/process/payment");

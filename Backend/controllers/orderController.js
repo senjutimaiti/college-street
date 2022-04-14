@@ -146,5 +146,7 @@ exports.razorpayOrder = async (req, res) => {
     },
   });
 
-  res.json({ id: order.id });
+  res.json({ 
+    id: order.id, 
+  });
 };
