@@ -5,7 +5,7 @@ import LibraryAddCheckIcon from "@material-ui/icons/LibraryAddCheck";
 import AccountBalanceIcon from "@material-ui/icons/AccountBalance";
 import "../styles/CustomStyles.css";
 
-const CheckoutSteps = ({ activeStep }) => {
+const CheckoutSteps = ({ activeStep, className }) => {
   const steps = [
     {
       label: <Typography>Shipping Details</Typography>,
@@ -27,7 +27,7 @@ const CheckoutSteps = ({ activeStep }) => {
 
   return (
     <>
-      <Stepper alternativeLabel activeStep={activeStep} style={stepStyles}>
+      <Stepper alternativeLabel activeStep={activeStep} style={stepStyles} className={className}>
         {steps.map((item, index) => (
           <Step
             key={index}
@@ -36,7 +36,7 @@ const CheckoutSteps = ({ activeStep }) => {
           >
             <StepLabel
               style={{
-                color: activeStep >= index ? "tomato" : "rgba(0, 0, 0, 0.649)",
+                color: activeStep >= index ? "tomato" : "rgba(0, 0, 0, 0.3)",
               }}
               icon={item.icon}
             >

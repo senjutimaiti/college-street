@@ -23,12 +23,6 @@ const userSchema = new mongoose.Schema({
     minLength: [8, "Password should be greater than 8 characters"],
     select: false,
   },
-  mobile: {
-    type: String,
-    minLength: [10, "Mobile number should be of 10 digits"],
-    maxLength: [10, "Mobile number should be of 10 digits"],
-  },
-
   role: {
     type: String,
     default: "user",
