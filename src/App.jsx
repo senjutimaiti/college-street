@@ -26,6 +26,7 @@ import ResetPassword from "./pages/ResetPassword";
 import Shipping from "./pages/Shipping";
 import ConfirmOrder from "./pages/ConfirmOrder";
 import Payment from "./pages/Payment";
+import MyOrders from "./pages/MyOrders";
 
 function App() {
   const { isAuthenticated } = useSelector((state) => state.user);
@@ -56,6 +57,9 @@ function App() {
             </ProtectedRoute>
             <ProtectedRoute exact path="/password/update">
               <UpdatePassword />
+            </ProtectedRoute>
+            <ProtectedRoute exact path="/orders">
+              <MyOrders />
             </ProtectedRoute>
             <Route exact path="/">
               <Home />
