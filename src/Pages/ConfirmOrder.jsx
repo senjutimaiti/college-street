@@ -6,11 +6,14 @@ import Footer from "../components/Footer";
 import { useHistory } from "react-router-dom";
 import P3 from "../images/P3.jpg";
 import Button from "../components/Button";
+import axios from "axios";
+import useRazorpay from "react-razorpay";
 
 const ConfirmOrder = () => {
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
   const { user } = useSelector((state) => state.user);
   const history = useHistory();
+  const Razorpay = useRazorpay();
 
   const subtotal = cartItems.reduce(
     (acc, item) => acc + item.quantity * item.price,
@@ -25,7 +28,7 @@ const ConfirmOrder = () => {
 
   const address = `${shippingInfo.address}, ${shippingInfo.city}, ${shippingInfo.state}, ${shippingInfo.pinCode}, ${shippingInfo.country}`;
 
-  const proceedToPayment = () => {
+  const proceedToPayment = async () => {
     const data = {
       subtotal,
       shippingCharges,
@@ -35,7 +38,29 @@ const ConfirmOrder = () => {
 
     sessionStorage.setItem("orderInfo", JSON.stringify(data));
 
-    history.push("/process/payment");
+    const { data: orderData } = await axios.post("/api/v1/order/razorpay");
+
+    var options = {
+      key: "rzp_test_UL4sNHtnJ2YsGd",
+      order_id: orderData.id,
+      callback_url: "http://localhost:3000/payment-success",
+    };
+
+    var rzp1 = new Razorpay(options);
+
+    rzp1.on("payment.failed", function (response) {
+      alert(response.error.code);
+      alert(response.error.description);
+      alert(response.error.source);
+      alert(response.error.step);
+      alert(response.error.reason);
+      alert(response.error.metadata.order_id);
+      alert(response.error.metadata.payment_id);
+    });
+
+    rzp1.open();
+
+    // history.push("/process/payment");
   };
 
   return (
