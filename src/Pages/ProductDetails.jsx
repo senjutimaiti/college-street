@@ -6,37 +6,36 @@ import ReactStars from "react-rating-stars-component";
 import Button from "../components/Button";
 import { useSelector, useDispatch } from "react-redux";
 import {
-    clearErrors,
-    getProductDetails,
-    // newReview,
-  } from "../actions/productAction";
+  clearErrors,
+  getProductDetails,
+  // newReview,
+} from "../actions/productAction";
 import { addItemsToCart } from "../actions/cartAction";
 import { useParams } from "react-router-dom";
 
 const ProductDetails = () => {
-
   const { id } = useParams();
   const dispatch = useDispatch();
 
-  const { product, error } = useSelector(
-    (state) => state.productDetails
-  );
+  const { product, error } = useSelector((state) => state.productDetails);
 
-//   const { success, error: reviewError } = useSelector(
-//     (state) => state.newReview
-//   );
+  //   const { success, error: reviewError } = useSelector(
+  //     (state) => state.newReview
+  //   );
 
   const options = {
     size: "large",
     value: product.ratings,
-    readOnly: true,
+    edit: false,
     precision: 0.5,
+    color: "gray",
+    activeColor: "#800000",
   };
 
   const [quantity, setQuantity] = useState(1);
-//   const [open, setOpen] = useState(false);
-//   const [rating, setRating] = useState(0);
-//   const [comment, setComment] = useState("");
+  //   const [open, setOpen] = useState(false);
+  //   const [rating, setRating] = useState(0);
+  //   const [comment, setComment] = useState("");
 
   const increaseQuantity = () => {
     if (product.Stock <= quantity) return;
@@ -53,34 +52,38 @@ const ProductDetails = () => {
   };
 
   const addToCartHandler = () => {
-    dispatch(addItemsToCart(id, quantity));
-    alert("Item Added To Cart");
+    if (product.stock >= 1) {
+      dispatch(addItemsToCart(id, quantity));
+      alert("Item Added To Cart");
+    } else {
+      alert("Out of Stock");
+    }
   };
 
-//   const submitReviewToggle = () => {
-//     open ? setOpen(false) : setOpen(true);
-//   };
+  //   const submitReviewToggle = () => {
+  //     open ? setOpen(false) : setOpen(true);
+  //   };
 
-//   const reviewSubmitHandler = () => {
-//     const myForm = new FormData();
+  //   const reviewSubmitHandler = () => {
+  //     const myForm = new FormData();
 
-//     myForm.set("rating", rating);
-//     myForm.set("comment", comment);
-//     myForm.set("productId", id);
+  //     myForm.set("rating", rating);
+  //     myForm.set("comment", comment);
+  //     myForm.set("productId", id);
 
-//     dispatch(newReview(myForm));
+  //     dispatch(newReview(myForm));
 
-//     setOpen(false);
-//   };
+  //     setOpen(false);
+  //   };
 
- useEffect(() => {
+  useEffect(() => {
     if (error) {
       alert(error);
       dispatch(clearErrors());
     }
 
     dispatch(getProductDetails(id));
-}, [dispatch, id, error]);
+  }, [dispatch, id, error]);
 
   return (
     <>
@@ -92,22 +95,46 @@ const ProductDetails = () => {
             <h3 className=" text-4xl font-extrabold">{product.name}</h3>
             <h2>₹ {product.price}</h2>
             <div>
-              <ReactStars {...options} />
+              <ReactStars
+                edit={true}
+                size={20}
+                color="gray"
+                activeColor="red"
+                value={product.ratings}
+              />
+              {console.log(product.ratings)}
             </div>
             <div className=" flex justify-left items-center">
-              <button onClick={decreaseQuantity} className=" bg-slate-400 px-3 cursor-pointer text-white transition-all duration-500 hover:bg-slate-700">-</button>
-              <input readOnly type="number" value={quantity} className=" p-2 text-center font-bold w-14"/>
-              <button onClick={increaseQuantity} className=" bg-slate-400 px-3 cursor-pointer text-white transition-all duration-500 hover:bg-slate-700">+</button>
+              <button
+                onClick={decreaseQuantity}
+                className=" bg-slate-400 px-3 cursor-pointer text-white transition-all duration-500 hover:bg-slate-700"
+              >
+                -
+              </button>
+              <input
+                readOnly
+                type="number"
+                value={quantity}
+                className=" p-2 text-center font-bold w-14"
+              />
+              <button
+                onClick={increaseQuantity}
+                className=" bg-slate-400 px-3 cursor-pointer text-white transition-all duration-500 hover:bg-slate-700"
+              >
+                +
+              </button>
             </div>
             <p>
-                  Status:
-                  <b className={product.Stock < 1 ? " text-red-500" : " text-green-600"}>
-                    {product.Stock < 1 ? " Out Of Stock" : " In Stock"}
-                  </b>
-                </p>
-            <p className=" my-5">
-              {product.description}
+              Status:
+              <b
+                className={
+                  product.stock < 1 ? " text-red-500" : " text-green-600"
+                }
+              >
+                {product.stock < 1 ? " Out Of Stock" : " In Stock"}
+              </b>
             </p>
+            <p className=" my-5">{product.description}</p>
             <Button
               onClick={addToCartHandler}
               text="ADD TO CART"

@@ -2,13 +2,13 @@ import { createStore, combineReducers, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import {
-//   // newProductReducer,
-//   // newReviewReducer,
+  //   // newProductReducer,
+  //   // newReviewReducer,
   productDetailsReducer,
-//   // productReducer,
-//   // productReviewsReducer,
+  //   // productReducer,
+  //   // productReviewsReducer,
   productsReducer,
-//   //reviewReducer,
+  //   //reviewReducer,
 } from "./reducers/productReducer";
 
 import {
@@ -25,7 +25,7 @@ import {
   // allOrdersReducer,
   myOrdersReducer,
   newOrderReducer,
-  // orderDetailsReducer,
+  orderDetailsReducer,
   // orderReducer,
 } from "./reducers/orderReducer";
 
@@ -38,16 +38,16 @@ const reducer = combineReducers({
   cart: cartReducer,
   newOrder: newOrderReducer,
   myOrders: myOrdersReducer,
-//   //   orderDetails: orderDetailsReducer,
-//   //   newReview: newReviewReducer,
-//   //   newProduct: newProductReducer,
-//   //   product: productReducer,
-//   //   allOrders: allOrdersReducer,
-//   //   order: orderReducer,
-//   //   allUsers: allUsersReducer,
-//   //   userDetails: userDetailsReducer,
-//   //   productReviews: productReviewsReducer,
-//   //   review: reviewReducer,
+  orderDetails: orderDetailsReducer,
+  //   //   newReview: newReviewReducer,
+  //   //   newProduct: newProductReducer,
+  //   //   product: productReducer,
+  //   //   allOrders: allOrdersReducer,
+  //   //   order: orderReducer,
+  //   //   allUsers: allUsersReducer,
+  //   //   userDetails: userDetailsReducer,
+  //   //   productReviews: productReviewsReducer,
+  //   //   review: reviewReducer,
 });
 
 let initialState = {

@@ -5,6 +5,8 @@ import { clearErrors, myOrders } from "../actions/orderAction";
 import Loader from "../components/Loader";
 import { useHistory } from "react-router-dom";
 import LaunchIcon from "@material-ui/icons/Launch";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const MyOrders = () => {
   const dispatch = useDispatch();
@@ -52,7 +54,11 @@ const MyOrders = () => {
       sortable: false,
       renderCell: (params) => {
         return (
-          <div onClick={() => history.push(`/order/${params.getValue(params.id, "id")}`)}>
+          <div
+            onClick={() =>
+              history.push(`/order/${params.getValue(params.id, "id")}`)
+            }
+          >
             <LaunchIcon />
           </div>
         );
@@ -82,22 +88,29 @@ const MyOrders = () => {
 
   return (
     <>
-
       {loading ? (
         <Loader />
       ) : (
-        <div className=" w-full px-28 box-border bg-slate-300 fixed top-0 left-0 flex flex-col">
-          <DataGrid
-            rows={rows}
-            columns={columns}
-            pageSize={10}
-            disableSelectionOnClick
-            className=" bg-white"
-            autoHeight
-          />
+        <>
+          <div className=" bg-white pb-20">
+            <Navbar />
 
-          <div id=" text-center p-5 box-border text-slate-300 transition-all duration-500 bg-slate-900" >{user.name}'s Orders</div>
-        </div>
+            <div className=" w-full mt-24 px-16 box-border bg-white  flex flex-col">
+              <DataGrid
+                rows={rows}
+                columns={columns}
+                pageSize={10}
+                disableSelectionOnClick
+                className=" bg-white"
+                autoHeight
+              />
+            </div>
+            <div className=" text-center p-5 box-border  mt-10 text-slate-300 transition-all duration-500 bg-slate-900">
+              {user.name}'s Orders
+            </div>
+          </div>
+          <Footer />
+        </>
       )}
     </>
   );

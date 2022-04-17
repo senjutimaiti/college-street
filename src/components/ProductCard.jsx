@@ -7,12 +7,11 @@ import { useDispatch } from "react-redux";
 import { addItemsToCart } from "../actions/cartAction";
 
 const ProductCard = ({ product }) => {
-
   const history = useHistory();
   const options = {
     edit: false,
     color: "gray",
-    activeColor: "#ffd700",
+    activeColor: "red",
     value: product.rating,
     isHalf: true,
   };
@@ -20,28 +19,42 @@ const ProductCard = ({ product }) => {
   const id = product._id;
   const quantity = 1;
   const dispatch = useDispatch();
-
   const addToCartHandler = () => {
-    dispatch(addItemsToCart(id, quantity));
-    alert("Item Added To Cart");
+    if (product.stock >= 1) {
+      dispatch(addItemsToCart(id, quantity));
+      alert("Item Added To Cart");
+    } else {
+      alert("Out of Stock");
+    }
   };
 
   return (
     <div>
       <div className=" flex flex-col justify-center items-center 4 relative w-full h-auto my-4 px-4">
-        <div onClick = {() => { history.push(`/product/${product._id}`)}} className=" flex flex-col justify-center items-center">
+        <div
+          onClick={() => {
+            history.push(`/product/${product._id}`);
+          }}
+          className=" flex flex-col justify-center items-center"
+        >
           <img
             src={P3}
             //src={product.images}
             alt="product"
             className=" w-full md:w-[400px] top-0 h-auto hover:cursor-pointer rounded-lg"
-            />
+          />
           <div className=" text-xl lg:text-2xl mt-2">{product.name}</div>
           <div>₹ {product.price}</div>
           <div>
-            <ReactStars {...options} />
+            <ReactStars
+              edit={false}
+              color="gray"
+              activeColor="red"
+              value={product.ratings}
+              isHalf={true}
+            />
           </div>
-        </div> 
+        </div>
         <Button
           onClick={addToCartHandler}
           text="ADD TO CART"
