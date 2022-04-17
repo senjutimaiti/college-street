@@ -51,7 +51,9 @@ const ConfirmOrder = () => {
       totalPrice: orderInfo.totalPrice,
     };
 
-    const { data: orderData } = await axios.post("/api/v1/order/razorpay");
+    const { data: orderData } = await axios.post("/api/v1/order/razorpay", {
+      totalPrice,
+    });
 
     const options = {
       key: "rzp_test_UL4sNHtnJ2YsGd",

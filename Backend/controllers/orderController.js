@@ -131,13 +131,14 @@ exports.deleteOrder = catchAsyncErrors(async (req, res, next) => {
 });
 
 exports.razorpayOrder = async (req, res) => {
+  const { totalPrice } = req.body;
   var instance = new Razorpay({
     key_id: "rzp_test_UL4sNHtnJ2YsGd",
     key_secret: "uffeyXQrhTecBerXGZujrbFB",
   });
   console.log(req);
   const order = await instance.orders.create({
-    amount: 800000,
+    amount: +totalPrice * 100,
     currency: "INR",
     receipt: "receipt#1",
     notes: {
