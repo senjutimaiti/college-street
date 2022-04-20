@@ -5,9 +5,9 @@ import {
   MY_ORDERS_REQUEST,
   MY_ORDERS_SUCCESS,
   MY_ORDERS_FAIL,
-  // ALL_ORDERS_REQUEST,
-  // ALL_ORDERS_SUCCESS,
-  // ALL_ORDERS_FAIL,
+  ALL_ORDERS_REQUEST,
+  ALL_ORDERS_SUCCESS,
+  ALL_ORDERS_FAIL,
   // UPDATE_ORDER_REQUEST,
   // UPDATE_ORDER_SUCCESS,
   // UPDATE_ORDER_FAIL,
@@ -59,21 +59,21 @@ export const myOrders = () => async (dispatch) => {
   }
 };
 
-// // Get All Orders (admin)
-// export const getAllOrders = () => async (dispatch) => {
-//   try {
-//     dispatch({ type: ALL_ORDERS_REQUEST });
+// Get All Orders (admin)
+export const getAllOrders = () => async (dispatch) => {
+  try {
+    dispatch({ type: ALL_ORDERS_REQUEST });
 
-//     const { data } = await axios.get("/api/v1/admin/orders");
+    const { data } = await axios.get("/api/v1/admin/orders");
 
-//     dispatch({ type: ALL_ORDERS_SUCCESS, payload: data.orders });
-//   } catch (error) {
-//     dispatch({
-//       type: ALL_ORDERS_FAIL,
-//       payload: error.response.data.message,
-//     });
-//   }
-// };
+    dispatch({ type: ALL_ORDERS_SUCCESS, payload: data.orders });
+  } catch (error) {
+    dispatch({
+      type: ALL_ORDERS_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
 
 // // Update Order
 // export const updateOrder = (id, order) => async (dispatch) => {

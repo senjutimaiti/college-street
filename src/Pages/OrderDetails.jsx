@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Typography } from "@material-ui/core";
 import { getOrderDetails, clearErrors } from "../actions/orderAction";
 import Loader from "../components/Loader";
 import { useParams, useHistory } from "react-router-dom";

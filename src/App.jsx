@@ -28,6 +28,8 @@ import ConfirmOrder from "./pages/ConfirmOrder";
 import Payment from "./pages/Payment";
 import MyOrders from "./pages/MyOrders";
 import OrderDetails from "./pages/OrderDetails";
+import Dashboard from "./pages/Dashboard";
+import ProductList from "./pages/ProductList";
 
 function App() {
   const { isAuthenticated } = useSelector((state) => state.user);
@@ -41,30 +43,6 @@ function App() {
       <Router>
         {isAuthenticated ? (
           <Switch>
-            <ProtectedRoute exact path="/account">
-              <Profile />
-            </ProtectedRoute>
-            <ProtectedRoute exact path="/shipping">
-              <Shipping />
-            </ProtectedRoute>
-            <ProtectedRoute exact path="/order/confirm">
-              <ConfirmOrder />
-            </ProtectedRoute>
-            <ProtectedRoute exact path="/process/payment">
-              <Payment />
-            </ProtectedRoute>
-            <ProtectedRoute exact path="/me/update">
-              <UpdateProfile />
-            </ProtectedRoute>
-            <ProtectedRoute exact path="/password/update">
-              <UpdatePassword />
-            </ProtectedRoute>
-            <ProtectedRoute exact path="/orders">
-              <MyOrders />
-            </ProtectedRoute>
-            <ProtectedRoute exact path="/order/:id">
-              <OrderDetails />
-            </ProtectedRoute>
             <Route exact path="/">
               <Home />
             </Route>
@@ -89,6 +67,36 @@ function App() {
             <Route exact path="/products/:keyword">
               <Products />
             </Route>
+            <ProtectedRoute exact path="/account">
+              <Profile />
+            </ProtectedRoute>
+            <ProtectedRoute exact path="/shipping">
+              <Shipping />
+            </ProtectedRoute>
+            <ProtectedRoute exact path="/order/confirm">
+              <ConfirmOrder />
+            </ProtectedRoute>
+            <ProtectedRoute exact path="/process/payment">
+              <Payment />
+            </ProtectedRoute>
+            <ProtectedRoute exact path="/me/update">
+              <UpdateProfile />
+            </ProtectedRoute>
+            <ProtectedRoute exact path="/password/update">
+              <UpdatePassword />
+            </ProtectedRoute>
+            <ProtectedRoute exact path="/orders">
+              <MyOrders />
+            </ProtectedRoute>
+            <ProtectedRoute exact path="/order/:id">
+              <OrderDetails />
+            </ProtectedRoute>
+            <ProtectedRoute isAdmin={true} exact path="/admin/dashboard">
+              <Dashboard />
+            </ProtectedRoute>
+            <ProtectedRoute isAdmin={true} exact path="/admin/products">
+              <ProductList />
+            </ProtectedRoute>
             <Redirect to="/account" />
           </Switch>
         ) : (

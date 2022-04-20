@@ -16,12 +16,17 @@ const MyOrders = () => {
   const { user } = useSelector((state) => state.user);
 
   const columns = [
-    { field: "id", headerName: "Order ID", minWidth: 300, flex: 1 },
+    { field: "id", 
+    headerName: "Order ID", 
+    headerClassName: " bg-orange-600 border-none text-white font-extrabold",
+    minWidth: 300, 
+    flex: 1 },
 
     {
       field: "status",
       headerName: "Status",
       minWidth: 150,
+      headerClassName: " bg-orange-600 border-none text-white font-extrabold",
       flex: 0.5,
       cellClassName: (params) => {
         return params.getValue(params.id, "status") === "Delivered"
@@ -33,6 +38,7 @@ const MyOrders = () => {
       field: "itemsQty",
       headerName: "Items Qty",
       type: "number",
+      headerClassName: " bg-orange-600 border-none text-white font-extrabold",
       minWidth: 150,
       flex: 0.3,
     },
@@ -41,6 +47,7 @@ const MyOrders = () => {
       field: "amount",
       headerName: "Amount",
       type: "number",
+      headerClassName: " bg-orange-600 border-none text-white font-extrabold",
       minWidth: 270,
       flex: 0.5,
     },
@@ -50,6 +57,7 @@ const MyOrders = () => {
       flex: 0.3,
       headerName: "Actions",
       minWidth: 150,
+      headerClassName: " bg-orange-600 border-none text-white font-extrabold",
       type: "number",
       sortable: false,
       renderCell: (params) => {
@@ -94,8 +102,11 @@ const MyOrders = () => {
         <>
           <div className=" bg-white pb-20">
             <Navbar />
+            <div className=" text-center pb-5 box-border text-2xl pt-36 text-slate-900 transition-all duration-500 bg-slate-300">
+              {user.name}'s Orders
+            </div>
 
-            <div className=" w-full mt-24 px-16 box-border bg-white  flex flex-col">
+            <div className=" w-full mt-10 px-16 box-border bg-white  flex flex-col">
               <DataGrid
                 rows={rows}
                 columns={columns}
@@ -104,9 +115,6 @@ const MyOrders = () => {
                 className=" bg-white"
                 autoHeight
               />
-            </div>
-            <div className=" text-center p-5 box-border  mt-10 text-slate-300 transition-all duration-500 bg-slate-900">
-              {user.name}'s Orders
             </div>
           </div>
           <Footer />

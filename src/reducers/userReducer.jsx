@@ -24,9 +24,9 @@ import {
     RESET_PASSWORD_REQUEST,
     RESET_PASSWORD_SUCCESS,
     RESET_PASSWORD_FAIL,
-    // ALL_USERS_REQUEST,
-    // ALL_USERS_SUCCESS,
-    // ALL_USERS_FAIL,
+    ALL_USERS_REQUEST,
+    ALL_USERS_SUCCESS,
+    ALL_USERS_FAIL,
     // DELETE_USER_REQUEST,
     // DELETE_USER_SUCCESS,
     // DELETE_USER_FAIL,
@@ -206,37 +206,37 @@ import {
     }
   };
   
-//   export const allUsersReducer = (state = { users: [] }, action) => {
-//     switch (action.type) {
-//       case ALL_USERS_REQUEST:
-//         return {
-//           ...state,
-//           loading: true,
-//         };
-//       case ALL_USERS_SUCCESS:
-//         return {
-//           ...state,
-//           loading: false,
-//           users: action.payload,
-//         };
+  export const allUsersReducer = (state = { users: [] }, action) => {
+    switch (action.type) {
+      case ALL_USERS_REQUEST:
+        return {
+          ...state,
+          loading: true,
+        };
+      case ALL_USERS_SUCCESS:
+        return {
+          ...state,
+          loading: false,
+          users: action.payload,
+        };
   
-//       case ALL_USERS_FAIL:
-//         return {
-//           ...state,
-//           loading: false,
-//           error: action.payload,
-//         };
+      case ALL_USERS_FAIL:
+        return {
+          ...state,
+          loading: false,
+          error: action.payload,
+        };
   
-//       case CLEAR_ERRORS:
-//         return {
-//           ...state,
-//           error: null,
-//         };
+      case CLEAR_ERRORS:
+        return {
+          ...state,
+          error: null,
+        };
   
-//       default:
-//         return state;
-//     }
-//   };
+      default:
+        return state;
+    }
+  };
   
 //   export const userDetailsReducer = (state = { user: {} }, action) => {
 //     switch (action.type) {

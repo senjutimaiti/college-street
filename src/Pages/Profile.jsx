@@ -22,6 +22,7 @@ const Profile = () => {
     dispatch(logout());
     alert("Logout Successfully");
   }
+
   return (
     <>
       <div className=" bg-white pb-10">
@@ -64,7 +65,6 @@ const Profile = () => {
               {String(user.createdAt).substr(0, 10)}
             </p>
           </div>
-
           <h3
             onClick={() => {
               history.push("/orders");
@@ -73,6 +73,16 @@ const Profile = () => {
           >
             My Orders
           </h3>
+          {user.role === "admin" && (
+            <h3
+            onClick={() => {
+              history.push("/admin/dashboard");
+            }}
+            className=" cursor-pointer text-gray-600 text-lg mb-3"
+          >
+            Dashboard
+          </h3>
+          )}
           <h3
             onClick={() => {
               history.push("/password/update");

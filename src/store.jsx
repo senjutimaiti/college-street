@@ -12,7 +12,7 @@ import {
 } from "./reducers/productReducer";
 
 import {
-  // allUsersReducer,
+  allUsersReducer,
   forgotPasswordReducer,
   profileReducer,
   // userDetailsReducer,
@@ -22,7 +22,7 @@ import {
 import { cartReducer } from "./reducers/cartReducer";
 
 import {
-  // allOrdersReducer,
+  allOrdersReducer,
   myOrdersReducer,
   newOrderReducer,
   orderDetailsReducer,
@@ -42,9 +42,9 @@ const reducer = combineReducers({
   //   //   newReview: newReviewReducer,
   //   //   newProduct: newProductReducer,
   //   //   product: productReducer,
-  //   //   allOrders: allOrdersReducer,
+  allOrders: allOrdersReducer,
   //   //   order: orderReducer,
-  //   //   allUsers: allUsersReducer,
+  allUsers: allUsersReducer,
   //   //   userDetails: userDetailsReducer,
   //   //   productReviews: productReviewsReducer,
   //   //   review: reviewReducer,
