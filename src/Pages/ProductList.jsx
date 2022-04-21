@@ -23,13 +23,13 @@ const ProductList = () => {
 
   const { error, products } = useSelector((state) => state.products);
 
-//   const { error: deleteError, isDeleted } = useSelector(
-//     (state) => state.product
-//   );
+  const { error: deleteError, isDeleted } = useSelector(
+    (state) => state.product
+  );
 
-//   const deleteProductHandler = (id) => {
-//     dispatch(deleteProduct(id));
-//   };
+  const deleteProductHandler = (id) => {
+    dispatch(deleteProduct(id));
+  };
 
   useEffect(() => {
     if (error) {
@@ -37,19 +37,19 @@ const ProductList = () => {
       dispatch(clearErrors());
     }
 
-    // if (deleteError) {
-    //   alert(deleteError);
-    //   dispatch(clearErrors());
-    // }
+    if (deleteError) {
+      alert(deleteError);
+      dispatch(clearErrors());
+    }
 
-    // if (isDeleted) {
-    //   alert("Product Deleted Successfully");
-    //   history.push("/admin/dashboard");
-    //   dispatch({ type: DELETE_PRODUCT_RESET });
-    // }
+    if (isDeleted) {
+      alert("Product Deleted Successfully");
+      history.push("/admin/dashboard");
+      dispatch({ type: DELETE_PRODUCT_RESET });
+    }
 
     dispatch(getAdminProduct());
-  }, [dispatch, error]);
+  }, [deleteError, dispatch, error, history, isDeleted]);
 
   const columns = [
     { 
@@ -101,9 +101,9 @@ const ProductList = () => {
             </div>
 
             <Button
-            //   onClick={() =>
-            //     deleteProductHandler(params.getValue(params.id, "id"))
-            //   }
+              onClick={() =>
+                deleteProductHandler(params.getValue(params.id, "id"))
+              }
             >
               <DeleteIcon />
             </Button>
@@ -119,7 +119,7 @@ const ProductList = () => {
     products.forEach((item) => {
       rows.push({
         id: item._id,
-        stock: item.Stock,
+        stock: item.stock,
         price: item.price,
         name: item.name,
       });
@@ -132,7 +132,7 @@ const ProductList = () => {
             <div className=" w-full grid grid-cols-[1fr_5fr]">
                 <SideBar />
                 <div className=" w-full box-border flex flex-col border-l-2 border-slate-300 py-12 mt-20">
-                <h1 className="text-2xl p-3 box-border text-slate-600 m-8 text-center">ALL PRODUCTS</h1>
+                <h1 className=" text-center w-[50%] p-6 mx-auto text-3xl mb-8">All Products</h1>
 
                 <DataGrid
                     rows={rows}

@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "../components/Button";
 import ReactStars from "react-rating-stars-component";
-import P3 from "../images/P3.jpg";
+// import P3 from "../images/P3.jpg";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addItemsToCart } from "../actions/cartAction";
@@ -38,8 +38,8 @@ const ProductCard = ({ product }) => {
           className=" flex flex-col justify-center items-center"
         >
           <img
-            src={P3}
-            //src={product.images}
+            // src={P3}
+            src={product.images[0]}
             alt="product"
             className=" w-full md:w-[400px] top-0 h-auto hover:cursor-pointer rounded-lg"
           />

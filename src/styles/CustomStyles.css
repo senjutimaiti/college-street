@@ -154,3 +154,38 @@
   width: 30vmax;
   margin: auto;
 }
+
+#createProductFormFile > input{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#createProductFormFile > input::file-selector-button {
+  cursor: pointer;
+  width: 150px;
+  z-index: 2;
+  height: 50px;
+  border: none;
+  margin-right: 30px;
+  transition: all 0.5s;
+  padding: 10px;
+  color: rgba(0, 0, 0, 1);
+  background-color: rgb(188, 188, 188);
+}
+
+#createProductFormFile > input::file-selector-button:hover {
+  background-color: rgb(235, 235, 235);
+}
+
+#createProductFormImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#createProductFormImage > img {
+  width: 300px;
+}

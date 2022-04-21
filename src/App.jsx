@@ -30,6 +30,8 @@ import MyOrders from "./pages/MyOrders";
 import OrderDetails from "./pages/OrderDetails";
 import Dashboard from "./pages/Dashboard";
 import ProductList from "./pages/ProductList";
+import NewProduct from "./pages/NewProduct";
+import UpdateProduct from "./pages/UpdateProduct";
 
 function App() {
   const { isAuthenticated } = useSelector((state) => state.user);
@@ -96,6 +98,12 @@ function App() {
             </ProtectedRoute>
             <ProtectedRoute isAdmin={true} exact path="/admin/products">
               <ProductList />
+            </ProtectedRoute>
+            <ProtectedRoute isAdmin={true} exact path="/admin/product">
+              <NewProduct />
+            </ProtectedRoute>
+            <ProtectedRoute isAdmin={true} exact path="/admin/product/:id">
+              <UpdateProduct />
             </ProtectedRoute>
             <Redirect to="/account" />
           </Switch>
