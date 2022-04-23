@@ -3,6 +3,29 @@ const ErrorHandler = require("../utils/errorHandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const ApiFeatures = require("../utils/apiFeatures");
 const cloudinary = require("cloudinary");
+const multer = require("multer");
+const { v4: uuidv4 } = require("uuid");
+const path = require("path");
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "images");
+  },
+  filename: function (req, file, cb) {
+    cb(null, uuidv4() + "-" + Date.now() + path.extname(file.originalname));
+  },
+});
+
+const fileFilter = (req, file, cb) => {
+  const allowedTypes = ["image/jpeg", "image/jpg", "image/png"];
+  if (allowedTypes.includes(file.mimetype)) {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
+
+let upload = multer({ storage, fileFilter });
 
 // Create Product -- Admin
 exports.createProduct = catchAsyncErrors(async (req, res, next) => {
@@ -13,7 +36,7 @@ exports.createProduct = catchAsyncErrors(async (req, res, next) => {
   } else {
     images = req.body.images;
   }
-  
+
   const imagesLinks = [];
 
   for (let i = 0; i < images.length; i++) {
@@ -47,7 +70,7 @@ exports.getAllProducts = catchAsyncErrors(async (req, res, next) => {
     .search()
     .filter()
     .pagination(resultPerPage);
-  
+
   const products = await apiFeature.query;
 
   res.status(200).json({
@@ -147,8 +170,8 @@ exports.createProductReview = catchAsyncErrors(async (req, res, next) => {
 
   if (isReviewed) {
     product.reviews.forEach((rev) => {
-      if (rev.user.toString() === req.user._id.toString()){
-        rev.rating = rating ;
+      if (rev.user.toString() === req.user._id.toString()) {
+        rev.rating = rating;
         rev.comment = comment;
       }
     });
