@@ -3,62 +3,39 @@ const ErrorHandler = require("../utils/errorHandler");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const ApiFeatures = require("../utils/apiFeatures");
 const cloudinary = require("cloudinary");
-const multer = require("multer");
-const { v4: uuidv4 } = require("uuid");
-const path = require("path");
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "images");
-  },
-  filename: function (req, file, cb) {
-    cb(null, uuidv4() + "-" + Date.now() + path.extname(file.originalname));
-  },
-});
+// // Create Product -- Admin
+// exports.createProduct = catchAsyncErrors(async (req, res, next) => {
+//   let images = [];
 
-const fileFilter = (req, file, cb) => {
-  const allowedTypes = ["image/jpeg", "image/jpg", "image/png"];
-  if (allowedTypes.includes(file.mimetype)) {
-    cb(null, true);
-  } else {
-    cb("File format not supported", false);
-  }
-};
+//   if (typeof req.body.images === "string") {
+//     images.push(req.body.images);
+//   } else {
+//     images = req.body.images;
+//   }
 
-let upload = multer({ storage, fileFilter });
+//   const imagesLinks = [];
+//   for (let i = 0; i < images.length; i++) {
+//     const result = await cloudinary.v2.uploader.upload(images[i], {
+//       folder: "products",
+//     });
 
-// Create Product -- Admin
-exports.createProduct = catchAsyncErrors(async (req, res, next) => {
-  let images = [];
+//     imagesLinks.push({
+//       public_id: result.public_id,
+//       url: result.secure_url,
+//     });
+//   }
 
-  if (typeof req.body.images === "string") {
-    images.push(req.body.images);
-  } else {
-    images = req.body.images;
-  }
+//   req.body.images = imagesLinks;
+//   req.body.user = req.user.id;
 
-  const imagesLinks = [];
-  for (let i = 0; i < images.length; i++) {
-    const result = await cloudinary.v2.uploader.upload(images[i], {
-      folder: "products",
-    });
+//   const product = await Product.create(req.body);
 
-    imagesLinks.push({
-      public_id: result.public_id,
-      url: result.secure_url,
-    });
-  }
-
-  req.body.images = imagesLinks;
-  req.body.user = req.user.id;
-
-  const product = await Product.create(req.body);
-
-  res.status(201).json({
-    success: true,
-    product,
-  });
-});
+//   res.status(201).json({
+//     success: true,
+//     product,
+//   });
+// });
 
 //Get all products
 exports.getAllProducts = catchAsyncErrors(async (req, res, next) => {

@@ -38,7 +38,7 @@ const ProductDetails = () => {
   //   const [comment, setComment] = useState("");
 
   const increaseQuantity = () => {
-    if (product.Stock <= quantity) return;
+    if (product.stock <= quantity) return;
 
     const qty = quantity + 1;
     setQuantity(qty);
@@ -90,7 +90,11 @@ const ProductDetails = () => {
       <div className=" bg-white">
         <Navbar />
         <div className=" block md:flex md:justify-center md:items-center mt-20">
-          <img src={P3} alt="product" className=" w-full md:w-1/2 p-20" />
+          <img
+            src={product.images[0].url}
+            alt="product"
+            className=" w-full md:w-1/2 p-20"
+          />
           <div className=" p-20">
             <h3 className=" text-4xl font-extrabold">{product.name}</h3>
             <h2>₹ {product.price}</h2>
