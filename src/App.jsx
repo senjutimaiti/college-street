@@ -32,6 +32,9 @@ import Dashboard from "./pages/Dashboard";
 import ProductList from "./pages/ProductList";
 import NewProduct from "./pages/NewProduct";
 import UpdateProduct from "./pages/UpdateProduct";
+import axios from "axios";
+axios.defaults.baseURL = "http://localhost:4000";
+axios.defaults.withCredentials = true;
 
 function App() {
   const { isAuthenticated } = useSelector((state) => state.user);

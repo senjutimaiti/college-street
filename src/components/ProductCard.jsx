@@ -39,7 +39,7 @@ const ProductCard = ({ product }) => {
         >
           <img
             // src={P3}
-            src={product.images[0]}
+            src={product.images[0]?.url}
             alt="product"
             className=" w-full md:w-[400px] top-0 h-auto hover:cursor-pointer rounded-lg"
           />

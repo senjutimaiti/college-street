@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { clearErrors, createProduct } from "../actions/productAction";
 import Button from "../components/Button";
 import Input from "../components/Input";
-import { useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Sidebar from "../components/Sidebar";
@@ -53,6 +53,7 @@ const NewProduct = () => {
     images.forEach((image) => {
       myForm.append("images", image);
     });
+    console.log(myForm);
     dispatch(createProduct(myForm));
   };
 
@@ -78,98 +79,105 @@ const NewProduct = () => {
 
   return (
     <>
-    <div className=" bg-white pb-20">
+      <div className=" bg-white pb-20">
         <Navbar />
-      <div className=" w-full grid grid-cols-[1fr_5fr]">
-        <Sidebar />
-        <div className=" border-l-2 border-slate-300 py-12 mt-20">
-        <h1 className=" text-center w-[50%] p-6 mx-auto text-3xl mb-8">Create Product</h1>
-          <form
-            encType="multipart/form-data"
-            className=" flex flex-col justify-center items-center"
-          >
+        <div className=" w-full grid grid-cols-[1fr_5fr]">
+          <Sidebar />
+          <div className=" border-l-2 border-slate-300 py-12 mt-20">
+            <h1 className=" text-center w-[50%] p-6 mx-auto text-3xl mb-8">
+              Create Product
+            </h1>
+            <form
+              encType="multipart/form-data"
+              className=" flex flex-col justify-center items-center"
+            >
+              <div>
+                <Input
+                  type="text"
+                  placeholder="Product Name"
+                  label="Product Name"
+                  required
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </div>
+              <div>
+                <Input
+                  type="number"
+                  placeholder="Price"
+                  label="Price"
+                  required
+                  onChange={(e) => setPrice(e.target.value)}
+                />
+              </div>
 
-            <div>
-              <Input
-                type="text"
-                placeholder="Product Name"
-                label="Product Name"
-                required
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-            </div>
-            <div>
-              <Input
-                type="number"
-                placeholder="Price"
-                label="Price"
-                required
-                onChange={(e) => setPrice(e.target.value)}
-              />
-            </div>
+              <div>
+                <label htmlFor="Message" className="text-xl text-left ">
+                  Product Description
+                </label>
+                <br />
+                <textarea
+                  placeholder="Product Description"
+                  value={description}
+                  className=" border-2 border-slate-200 h-[300px] w-[300px] md:w-[500px] pl-3 mt-2 mb-5 "
+                  onChange={(e) => setDescription(e.target.value)}
+                  cols="30"
+                  rows="1"
+                ></textarea>
+              </div>
 
-            <div>
-            <label htmlFor="Message" className="text-xl text-left ">
-            Product Description
-            </label><br />
-              <textarea
-                placeholder="Product Description"
-                value={description}
-                className=" border-2 border-slate-200 h-[300px] w-[300px] md:w-[500px] pl-3 mt-2 mb-5 "
-                onChange={(e) => setDescription(e.target.value)}
-                cols="30"
-                rows="1"
-              ></textarea>
-            </div>
+              <div>
+                <select
+                  onChange={(e) => setCategory(e.target.value)}
+                  className={
+                    " border-2 border-slate-200 h-12 md:w-[500px] pl-3 mt-2 mb-5 w-[300px]"
+                  }
+                >
+                  <option value="">Choose Category</option>
+                  {categories.map((cate) => (
+                    <option key={cate} value={cate}>
+                      {cate}
+                    </option>
+                  ))}
+                </select>
+              </div>
 
-            <div>
-              <select onChange={(e) => setCategory(e.target.value)} className={" border-2 border-slate-200 h-12 md:w-[500px] pl-3 mt-2 mb-5 w-[300px]"}>
-                <option value="">Choose Category</option>
-                {categories.map((cate) => (
-                  <option key={cate} value={cate}>
-                    {cate}
-                  </option>
+              <div>
+                <Input
+                  type="number"
+                  placeholder="Stock"
+                  label="Stock"
+                  required
+                  onChange={(e) => setStock(e.target.value)}
+                />
+              </div>
+
+              <div id="createProductFormFile">
+                <input
+                  type="file"
+                  name="avatar"
+                  accept="image/*"
+                  onChange={createProductImagesChange}
+                  multiple
+                  className=" flex p-8 ml-8"
+                />
+              </div>
+
+              <div id="createProductFormImage">
+                {imagesPreview.map((image, index) => (
+                  <img key={index} src={image} alt="Product Preview" />
                 ))}
-              </select>
-            </div>
+              </div>
 
-            <div>
-              <Input
-                type="number"
-                placeholder="Stock"
-                label="Stock"
-                required
-                onChange={(e) => setStock(e.target.value)}
+              <Button
+                text="CREATE"
+                className="  hover:border-2 hover:border-black h-16 md:w-[500px] w-[300px] mt-2 mb-5 font-bold text-md hover:text-black hover:bg-white bg-black text-white  transition-all duration-700 "
+                disabled={loading ? true : false}
+                onClick={createProductSubmitHandler}
               />
-            </div>
-
-            <div id="createProductFormFile">
-              <input
-                type="file"
-                name="avatar"
-                accept="image/*"
-                onChange={createProductImagesChange}
-                multiple
-                className=" flex p-8 ml-8"
-              />
-            </div>
-
-            <div id="createProductFormImage">
-              {imagesPreview.map((image, index) => (
-                <img key={index} src={image} alt="Product Preview" />
-              ))}
-            </div>
-
-            <Button
-              text="CREATE"
-              className="  hover:border-2 hover:border-black h-16 md:w-[500px] w-[300px] mt-2 mb-5 font-bold text-md hover:text-black hover:bg-white bg-black text-white  transition-all duration-700 "
-              disabled={loading ? true : false}
-              onClick={createProductSubmitHandler}
-            />
-          </form>
+            </form>
+          </div>
         </div>
-      </div>
       </div>
       <Footer />
     </>
