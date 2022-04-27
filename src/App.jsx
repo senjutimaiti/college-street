@@ -32,6 +32,7 @@ import Dashboard from "./pages/Dashboard";
 import ProductList from "./pages/ProductList";
 import NewProduct from "./pages/NewProduct";
 import UpdateProduct from "./pages/UpdateProduct";
+import OrderList from "./pages/OrderList";
 import axios from "axios";
 axios.defaults.baseURL = "http://localhost:4000";
 axios.defaults.withCredentials = true;
@@ -107,6 +108,9 @@ function App() {
             </ProtectedRoute>
             <ProtectedRoute isAdmin={true} exact path="/admin/product/:id">
               <UpdateProduct />
+            </ProtectedRoute>
+            <ProtectedRoute isAdmin={true} exact path="/admin/orders">
+              <OrderList />
             </ProtectedRoute>
             <Redirect to="/account" />
           </Switch>
