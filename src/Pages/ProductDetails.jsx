@@ -90,11 +90,20 @@ const ProductDetails = () => {
       <div className=" bg-white">
         <Navbar />
         <div className=" block md:flex md:justify-center md:items-center mt-20">
-          <img
-            src={product.images[0].url}
+          {/* <img
+            src={product.images[0]?.url}
             alt="product"
             className=" w-full md:w-1/2 p-20"
-          />
+          /> */}
+          {product.images &&
+            product.images.map((item, i) => (
+              <img
+                key={i}
+                src={item.url}
+                alt={`${i} Slide`}
+                className=" w-full md:w-1/2 p-20"
+              />
+            ))}
           <div className=" p-20">
             <h3 className=" text-4xl font-extrabold">{product.name}</h3>
             <h2>₹ {product.price}</h2>
