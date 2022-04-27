@@ -18,9 +18,9 @@ const Dashboard = () => {
 
   const { products } = useSelector((state) => state.products);
 
-//   const { orders } = useSelector((state) => state.allOrders);
+  const { orders } = useSelector((state) => state.allOrders);
 
-//   const { users } = useSelector((state) => state.allUsers);
+  // const { users } = useSelector((state) => state.allUsers);
 
   let outOfStock = 0;
 
@@ -33,15 +33,15 @@ const Dashboard = () => {
 
   useEffect(() => {
     dispatch(getAdminProduct());
-    // dispatch(getAllOrders());
+    dispatch(getAllOrders());
     // dispatch(getAllUsers());
   }, [dispatch]);
 
-//   let totalAmount = 0;
-//   orders &&
-//     orders.forEach((item) => {
-//       totalAmount += item.totalPrice;
-//     });
+  let totalAmount = 0;
+  orders &&
+    orders.forEach((item) => {
+      totalAmount += item.totalPrice;
+    });
 
   const lineState = {
     labels: ["Initial Amount", "Amount Earned"],
@@ -50,8 +50,7 @@ const Dashboard = () => {
         label: "TOTAL AMOUNT",
         backgroundColor: ["tomato"],
         hoverBackgroundColor: ["rgb(197, 72, 49)"],
-        // data: [0, totalAmount],
-        data: [0, 40000],
+        data: [0, totalAmount],
       },
     ],
   };
@@ -80,8 +79,7 @@ const Dashboard = () => {
                 <div className=" m-8">
                     <div className=" flex justify-center">
                         <p className=" bg-blue-400 text-white text-xl text-center p-6 w-full mx-8">
-                        {/* Total Amount <br /> ₹{totalAmount} */}
-                        Total Amount <br /> ₹2000
+                        Total Amount <br /> ₹{totalAmount}
                         </p>
                     </div>
                     <div className=" flex justify-center">
@@ -91,8 +89,7 @@ const Dashboard = () => {
                         </div>
                         <div onClick={() => {history.push("/admin/orders")}} className=" text-2xl text-center bg-yellow-400 p-6 m-6 w-40 h-40 rounded-full flex flex-col justify-center items-center">
                             <p>Orders</p>
-                            {/* <p>{orders && orders.length}</p> */}
-                            <p>4</p>
+                            <p>{orders && orders.length}</p>
                         </div>
                         <div onClick={() => {history.push("/admin/users")}} className=" text-2xl text-center bg-blue-400 p-6 m-6 w-40 h-40 rounded-full flex flex-col justify-center items-center">
                             <p>Users</p>
