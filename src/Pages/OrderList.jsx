@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import Button from "../components/Button";
+import { Button } from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import Sidebar from "../components/Sidebar";
@@ -54,8 +54,8 @@ const OrderList = () => {
       field: "id", 
       headerName: "Order ID", 
       headerClassName: " bg-orange-600 border-none text-white font-extrabold",
-      minWidth: 300, 
-      flex: 1 },
+      minWidth: 200, 
+      flex: 0.7 },
 
     {
       field: "status",
@@ -83,8 +83,8 @@ const OrderList = () => {
       headerName: "Amount",
       headerClassName: " bg-orange-600 border-none text-white font-extrabold",
       type: "number",
-      minWidth: 270,
-      flex: 0.5,
+      minWidth: 170,
+      flex: 0.4,
     },
 
     {
