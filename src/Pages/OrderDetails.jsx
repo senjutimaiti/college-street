@@ -113,10 +113,6 @@ const OrderDetails = () => {
                 {order.orderItems &&
                   order.orderItems.map((item) => (
                     <div key={item.product}>
-                      <img src={item.image} alt="Product" />
-                      {/* <Link to={`/product/${item.product}`}>
-                        {item.name}
-                      </Link> */}
                       <div
                         onClick={() => {
                           history.push(`/product/${item.product}`);

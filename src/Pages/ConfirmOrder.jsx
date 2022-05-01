@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useHistory } from "react-router-dom";
-import P3 from "../images/P3.jpg";
 import Button from "../components/Button";
 import axios from "axios";
 import useRazorpay from "react-razorpay";
@@ -130,8 +129,7 @@ const ConfirmOrder = () => {
                       key={item.product}
                       className="flex justify-around items-center my-3 border-b-[0.5px] border-slate-500 pb-2"
                     >
-                      <img className="h-auto w-28" src={P3} alt="Product" />
-                      {/* <img src={item.image} alt="Product" /> */}
+                      <img className="h-auto w-28" src={item.image} alt="Product" />
                       <div
                         onClick={() => {
                           history.push(`/product/${item.product}`);

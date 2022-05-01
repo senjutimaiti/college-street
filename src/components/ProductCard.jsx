@@ -12,7 +12,7 @@ const ProductCard = ({ product }) => {
     edit: false,
     color: "gray",
     activeColor: "red",
-    value: product.rating,
+    value: product.ratings,
     isHalf: true,
   };
 

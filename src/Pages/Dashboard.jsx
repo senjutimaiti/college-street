@@ -20,7 +20,7 @@ const Dashboard = () => {
 
   const { orders } = useSelector((state) => state.allOrders);
 
-  // const { users } = useSelector((state) => state.allUsers);
+  const { users } = useSelector((state) => state.allUsers);
 
   let outOfStock = 0;
 
@@ -34,7 +34,7 @@ const Dashboard = () => {
   useEffect(() => {
     dispatch(getAdminProduct());
     dispatch(getAllOrders());
-    // dispatch(getAllUsers());
+    dispatch(getAllUsers());
   }, [dispatch]);
 
   let totalAmount = 0;
@@ -93,8 +93,7 @@ const Dashboard = () => {
                         </div>
                         <div onClick={() => {history.push("/admin/users")}} className=" text-2xl text-center bg-blue-400 p-6 m-6 w-40 h-40 rounded-full flex flex-col justify-center items-center">
                             <p>Users</p>
-                            {/* <p>{users && users.length}</p> */}
-                            <p>5</p>
+                            <p>{users && users.length}</p>
                         </div>
                     </div>
                 </div>

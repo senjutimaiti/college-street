@@ -1,17 +1,24 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import P3 from "../images/P3.jpg";
 import ReactStars from "react-rating-stars-component";
 import Button from "../components/Button";
 import { useSelector, useDispatch } from "react-redux";
 import {
   clearErrors,
   getProductDetails,
-  // newReview,
+  newReview,
 } from "../actions/productAction";
 import { addItemsToCart } from "../actions/cartAction";
 import { useParams } from "react-router-dom";
+import { NEW_REVIEW_RESET } from "../constants/productConstants";
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle
+} from "@material-ui/core";
+import { Rating } from "@material-ui/lab";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -19,9 +26,9 @@ const ProductDetails = () => {
 
   const { product, error } = useSelector((state) => state.productDetails);
 
-  //   const { success, error: reviewError } = useSelector(
-  //     (state) => state.newReview
-  //   );
+    const { success, error: reviewError } = useSelector(
+      (state) => state.newReview
+    );
 
   const options = {
     size: "large",
@@ -33,9 +40,8 @@ const ProductDetails = () => {
   };
 
   const [quantity, setQuantity] = useState(1);
-  //   const [open, setOpen] = useState(false);
-  //   const [rating, setRating] = useState(0);
-  //   const [comment, setComment] = useState("");
+  const [open, setOpen] = useState(false);
+  const [rating, setRating] = useState(0);
 
   const increaseQuantity = () => {
     if (product.stock <= quantity) return;
@@ -60,21 +66,20 @@ const ProductDetails = () => {
     }
   };
 
-  //   const submitReviewToggle = () => {
-  //     open ? setOpen(false) : setOpen(true);
-  //   };
+  const submitReviewToggle = () => {
+    open ? setOpen(false) : setOpen(true);
+  };
 
-  //   const reviewSubmitHandler = () => {
-  //     const myForm = new FormData();
+  const reviewSubmitHandler = () => {
+    const myForm = new FormData();
 
-  //     myForm.set("rating", rating);
-  //     myForm.set("comment", comment);
-  //     myForm.set("productId", id);
+    myForm.set("rating", rating);
+    myForm.set("productId", id);
 
-  //     dispatch(newReview(myForm));
+    dispatch(newReview(myForm));
 
-  //     setOpen(false);
-  //   };
+    setOpen(false);
+  };
 
   useEffect(() => {
     if (error) {
@@ -82,19 +87,24 @@ const ProductDetails = () => {
       dispatch(clearErrors());
     }
 
+    if (reviewError) {
+      alert(reviewError);
+      dispatch(clearErrors());
+    }
+
+    if (success) {
+      alert("Review Submitted Successfully");
+      dispatch({ type: NEW_REVIEW_RESET });
+    }
+
     dispatch(getProductDetails(id));
-  }, [dispatch, id, error]);
+  }, [dispatch, id, error, reviewError, success]);
 
   return (
     <>
       <div className=" bg-white">
         <Navbar />
         <div className=" block md:flex md:justify-center md:items-center mt-20">
-          {/* <img
-            src={product.images[0]?.url}
-            alt="product"
-            className=" w-full md:w-1/2 p-20"
-          /> */}
           {product.images &&
             product.images.map((item, i) => (
               <img
@@ -115,7 +125,25 @@ const ProductDetails = () => {
                 activeColor="red"
                 value={product.ratings}
               />
-              {console.log(product.ratings)}
+              <Button text="ADD RATING" onClick={submitReviewToggle} className=" border-2 rounded-lg border-black w-full p-2 font-bold text-md text-black bg-white hover:bg-black hover:text-white  transition-all duration-700 my-5" />
+              <Dialog
+                aria-labelledby="simple-dialog-title"
+                open={open}
+                onClose={submitReviewToggle}
+              >
+                <DialogTitle>Submit Review</DialogTitle>
+                <DialogContent className="flex flex-col">
+                  <Rating
+                    onChange={(e) => setRating(e.target.value)}
+                    value={rating}
+                    size="large"
+                  />
+                </DialogContent>
+                <DialogActions>
+                  <Button text="CANCEL" onClick={submitReviewToggle} className=" border-2 rounded-lg border-black w-full p-2 font-bold text-md text-black bg-white hover:bg-black hover:text-white  transition-all duration-700 " />
+                  <Button text="SUBMIT" onClick={reviewSubmitHandler} className=" border-2 rounded-lg border-black w-full p-2 font-bold text-md text-black bg-white hover:bg-black hover:text-white  transition-all duration-700 " />
+                </DialogActions>
+              </Dialog>
             </div>
             <div className=" flex justify-left items-center">
               <button

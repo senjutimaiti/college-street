@@ -56,10 +56,6 @@ const productSchema = mongoose.Schema({
         type: Number,
         required: true,
       },
-      comment: {
-        type: String,
-        required: true,
-      },
     },
   ],
 
