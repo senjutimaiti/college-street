@@ -66,14 +66,12 @@ const OrderDetails = () => {
                 <div className="flex h-auto justify-center items-center mb-2">
                   <p
                     className={
-                      (order.paymentInfo &&
-                      order.paymentInfo.status === "succeeded"
+                      (order.paymentInfo && order.paymentInfo.status === "Paid"
                         ? "text-green-500"
                         : "text-red-500") + " text-lg mt-5 "
                     }
                   >
-                    {order.paymentInfo &&
-                    order.paymentInfo.status === "succeeded"
+                    {order.paymentInfo && order.paymentInfo.status === "Paid"
                       ? "PAID"
                       : "NOT PAID"}
                   </p>
@@ -105,22 +103,23 @@ const OrderDetails = () => {
             </div>
             <div className="border-b-[0.5px] border-black border-opacity-50 h-4 w-full"></div>
 
-            <div>
+            <div className="w-full h-auto flex flex-col justify-center items-center ">
               <div className="text-xl text-black mt-2 underline underline-offset-4 ">
                 Order Items:
               </div>
-              <div className="orderDetailsCartItemsContainer">
+              <div className="h-auto w-full text-center mt-4">
                 {order.orderItems &&
                   order.orderItems.map((item) => (
                     <div key={item.product}>
                       <div
+                        className=" cursor-pointer tracking-wider font-semibold text-black"
                         onClick={() => {
                           history.push(`/product/${item.product}`);
                         }}
                       >
                         {item.name}
                       </div>
-                      <span>
+                      <span className="tracking-wider font-semibold text-black">
                         {item.quantity} X ₹{item.price} ={" "}
                         <b>₹{item.price * item.quantity}</b>
                       </span>
