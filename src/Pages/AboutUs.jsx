@@ -14,16 +14,42 @@ import { useState } from "react";
 
 const AboutUs = () => {
   const [counter, setCounter] = useState(0);
-
+  const [counter1, setCounter1] = useState(0);
+  const [counter2, setCounter2] = useState(0);
+  const [counter3, setCounter3] = useState(0);
   useEffect(() => {
     setInterval(() => {
       setCounter((counter) => {
-        if (counter <= 100) {
+        if (counter <= 1000) {
           return counter + 1;
         }
         return counter;
       });
     }, 100);
+    setInterval(() => {
+      setCounter1((counter1) => {
+        if (counter1 <= 25) {
+          return counter1 + 1;
+        }
+        return counter1;
+      });
+    }, 300);
+    setInterval(() => {
+      setCounter2((counter2) => {
+        if (counter2 <= 100) {
+          return counter2 + 1;
+        }
+        return counter2;
+      });
+    }, 200);
+    setInterval(() => {
+      setCounter3((counter3) => {
+        if (counter3 <= 13) {
+          return counter3 + 1;
+        }
+        return counter3;
+      });
+    }, 250);
   }, []);
 
   return (
@@ -102,15 +128,15 @@ const AboutUs = () => {
                 </p>
               </div>
               <div className=" flex flex-col justify-center items-center my-10">
-                <h3 className=" text-5xl text-black font-bold">24</h3>
+                <h3 className=" text-5xl text-black font-bold">{counter1}</h3>
                 <p className=" text-xl text-black font-light">Branches</p>
               </div>
               <div className=" flex flex-col justify-center items-center my-10">
-                <h3 className=" text-5xl text-black font-bold">100</h3>
+                <h3 className=" text-5xl text-black font-bold">{counter2}</h3>
                 <p className=" text-xl text-black font-light">Partners</p>
               </div>
               <div className=" flex flex-col justify-center items-center my-10">
-                <h3 className=" text-5xl text-black font-bold">13</h3>
+                <h3 className=" text-5xl text-black font-bold">{counter3}</h3>
                 <p className=" text-xl text-black font-light">Awards</p>
               </div>
             </div>
