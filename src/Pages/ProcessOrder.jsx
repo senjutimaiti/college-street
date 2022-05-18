@@ -67,61 +67,73 @@ const ProcessOrder = () => {
                 }}
               >
                 <div>
-                  <div className=" text-center pb-5  text-xl  text-slate-900  bg-white">
-                    <div>Shipping Info</div>
-                    <div className="">
-                      <div>
+                  <div className=" text-center mb-5  bg-white">
+                    <div className="pb-3  text-xl  text-slate-900 underline underline-offset-4">
+                      Shipping Info
+                    </div>
+                    <div className="text-base  text-slate-600 mb-6">
+                      <div className=" flex justify-center items-center">
                         <p>Name:</p>
-                        <span>{order.user && order.user.name}</span>
+                        <span className="text-black tracking-wider ml-3">
+                          {order.user && order.user.name}
+                        </span>
                       </div>
-                      <div>
+                      <div className=" flex justify-center items-center">
                         <p>Phone:</p>
-                        <span>
+                        <span className="text-black tracking-wider ml-3">
                           {order.shippingInfo && order.shippingInfo.phoneNo}
                         </span>
                       </div>
-                      <div>
+                      <div className=" flex justify-center items-center">
                         <p>Address:</p>
-                        <span>
+                        <span className="text-black tracking-wider ml-3">
                           {order.shippingInfo &&
                             `${order.shippingInfo.address}, ${order.shippingInfo.city}, ${order.shippingInfo.state}, ${order.shippingInfo.pinCode}, ${order.shippingInfo.country}`}
                         </span>
                       </div>
                     </div>
 
-                    <div>Payment</div>
-                    <div className="orderDetailsContainerBox">
-                      <div>
+                    <div className="pb-3  text-xl  text-slate-900 underline underline-offset-4">
+                      Payment
+                    </div>
+                    <div className="text-base  text-slate-600 mb-6">
+                      <div className=" flex justify-center items-center">
+                        <p>Payment Status:</p>
                         <p
                           className={
                             order.paymentInfo &&
-                            order.paymentInfo.status === "succeeded"
-                              ? "greenColor"
-                              : "redColor"
+                            order.paymentInfo.status === "Paid"
+                              ? "text-green-500 tracking-wider ml-3"
+                              : "text-red-500 tracking-wider ml-3"
                           }
                         >
                           {order.paymentInfo &&
-                          order.paymentInfo.status === "succeeded"
+                          order.paymentInfo.status === "Paid"
                             ? "PAID"
                             : "NOT PAID"}
                         </p>
                       </div>
 
-                      <div>
+                      <div className=" flex justify-center items-center">
                         <p>Amount:</p>
-                        <span>{order.totalPrice && order.totalPrice}</span>
+                        <span className="text-black tracking-wider ml-3">
+                          ₹{order.totalPrice && order.totalPrice}
+                        </span>
                       </div>
                     </div>
 
-                    <div>Order Status</div>
-                    <div className="orderDetailsContainerBox">
-                      <div>
+                    <div className="pb-3  text-xl  text-slate-900 underline underline-offset-4">
+                      Order Status
+                    </div>
+                    <div className="text-base  text-slate-600 mb-6">
+                      <div className=" flex justify-center items-center">
+                        <p>Delivery Status:</p>
                         <p
                           className={
                             order.orderStatus &&
                             order.orderStatus === "Delivered"
-                              ? "greenColor"
-                              : "redColor"
+                              ? "text-green-500 tracking-wider ml-3"
+                              : "text-red-500 tracking-wider ml-3"
                           }
                         >
                           {order.orderStatus && order.orderStatus}
@@ -129,19 +141,25 @@ const ProcessOrder = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="text-center pb-5  text-xl  text-slate-900  bg-white">
-                    <div>Your Cart Items:</div>
-                    <div className="confirmCartItemsContainer">
+                  <div className="text-center pb-5    bg-white">
+                    <div className="pb-3  text-xl  text-slate-900 underline underline-offset-4">
+                      Your Cart Items:
+                    </div>
+                    <div className="text-base  text-slate-600 mb-6 mt-3">
                       {order.orderItems &&
                         order.orderItems.map((item) => (
-                          <div key={item.product}>
+                          <div
+                            key={item.product}
+                            className="flex items-center justify-center mb-3"
+                          >
                             <div
                               onClick={() => {
                                 history.push(`/product/${item.product}`);
                               }}
+                              className="text-black text-xl font-semibold tracking-wider"
                             >
-                              {item.name}
-                            </div>{" "}
+                              {item.name} :
+                            </div>
                             <span>
                               {item.quantity} X ₹{item.price} ={" "}
                               <b>₹{item.price * item.quantity}</b>
@@ -151,7 +169,7 @@ const ProcessOrder = () => {
                     </div>
                   </div>
                 </div>
-                {/*  */}
+
                 <div
                   style={{
                     display:
@@ -162,7 +180,9 @@ const ProcessOrder = () => {
                     className="text-center pb-5  text-xl  text-slate-900  bg-white"
                     onSubmit={updateOrderSubmitHandler}
                   >
-                    <h1>Process Order</h1>
+                    <h1 className="pb-3  text-xl  text-slate-900 underline underline-offset-4">
+                      Process Order
+                    </h1>
 
                     <div>
                       <AccountTreeIcon />
