@@ -6,6 +6,7 @@ import Button from "../components/Button";
 import { useDispatch } from "react-redux";
 import { logout } from "../actions/userAction";
 import { useHistory } from "react-router-dom";
+import profile from "../images/profile.jpg";
 
 const Profile = () => {
   const { user, isAuthenticated } = useSelector((state) => state.user);
@@ -27,79 +28,70 @@ const Profile = () => {
     <>
       <div className=" bg-white pb-10">
         <Navbar />
-        <div className=" mt-32 flex flex-col justify-center items-center h-auto w-full">
-          <h1 className=" text-xl  tracking-wider mb-6 font-medium border-b-[0.4px] w-3/4 text-center">
+        <div className=" block md:flex">
+          <div className="block w-full md:w-1/2">
+            <img src={profile} alt={"banner"} className=" md:relative w-full h-auto md:top-1/2 md:-translate-y-1/2" />
+          </div>
+          <div className=" px-20 mt-40">
+          <h3 className=" text-5xl mt-5 text-black font-black pb-5">
             My Profile
-          </h1>
+          </h3>
           <h3
             onClick={() => {
               history.push("/me/update");
-            }}
-            className=" cursor-pointer text-lg mb-3 text-gray-600"
+            } }
+            className=" text-lg mb-3 text-gray-600 underline underline-offset-1 cursor-pointer"
           >
             Edit Profile
           </h3>
-        </div>
-        <div className="flex flex-col justify-center items-center h-auto w-full">
-          <div>
-            <p className=" text-gray-600 text-lg mb-3">
-              <span className=" tracking-wider font-semibold text-black">
-                Full Name :
-              </span>
-              {user.name}
-            </p>
-          </div>
-          <div>
-            <p className=" text-gray-600 text-lg mb-3">
-              <span className=" tracking-wider font-semibold text-black">
-                Email :
-              </span>{" "}
-              {user.email}
-            </p>
-          </div>
-          <div>
-            <p className=" text-gray-600 text-lg mb-3">
-              <span className=" tracking-wider font-semibold text-black">
-                Joined On :
-              </span>{" "}
-              {String(user.createdAt).substr(0, 10)}
-            </p>
-          </div>
+        
+          <p className=" text-xl text-black font-bold my-5">Name</p>
+          <p className=" text-2xl text-black font-light mb-10">
+            {user.name}
+          </p>
+          <p className=" text-xl text-black font-bold my-5">Email</p>
+          <p className=" text-2xl text-black font-light mb-10">
+            {user.email}
+          </p>
+          <p className=" text-xl text-black font-bold my-5">Joined on</p>
+          <p className=" text-2xl text-black font-light mb-10">
+            {String(user.createdAt).substr(0, 10)}
+          </p>
+        <h3
+          onClick={() => {
+            history.push("/orders");
+          } }
+          className=" underline underline-offset-1 cursor-pointer text-gray-600 text-lg mb-3"
+        >
+          My Orders
+        </h3>
+        {user.role === "admin" && (
           <h3
             onClick={() => {
-              history.push("/orders");
-            }}
-            className=" cursor-pointer text-gray-600 text-lg mb-3"
-          >
-            My Orders
-          </h3>
-          {user.role === "admin" && (
-            <h3
-            onClick={() => {
               history.push("/admin/dashboard");
-            }}
-            className=" cursor-pointer text-gray-600 text-lg mb-3"
+            } }
+            className=" underline underline-offset-1 cursor-pointer text-gray-600 text-lg mb-3"
           >
             Dashboard
           </h3>
-          )}
-          <h3
-            onClick={() => {
-              history.push("/password/update");
-            }}
-            className=" cursor-pointer text-gray-600 text-lg mb-3"
-          >
-            Change Password
-          </h3>
+        )}
+        <h3
+          onClick={() => {
+            history.push("/password/update");
+          } }
+          className=" underline underline-offset-1 cursor-pointer text-gray-600 text-lg mb-3"
+        >
+          Change Password
+        </h3>
 
-          <Button
-            text="LOG OUT"
-            className="  hover:border-2 hover:border-black h-16 md:w-[500px] w-[300px] mt-2 mb-5 font-bold text-md hover:text-black hover:bg-white bg-black text-white  transition-all duration-700 "
-            onClick={logoutUser}
-          />
-        </div>
+        <Button
+          text="LOG OUT" 
+          className=" border-2 rounded-lg border-black p-2 font-bold text-md hover:text-black hover:bg-white bg-black text-white transition-all duration-700 "
+          onClick={logoutUser} />
       </div>
-      <Footer />
+      </div>
+      </div>
+    <Footer />
     </>
   );
 };

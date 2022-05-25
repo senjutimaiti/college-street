@@ -103,17 +103,13 @@ const ConfirmOrder = () => {
               <div className=" m-10">
                 <div className=" flex flex-col h-auto  justify-center items-center text-xl ">
                   <p className=" flex h-auto justify-center items-center mb-2  ">
-                    Name: <span className="text-slate-500">{user.name}</span>
+                    Name: {user.name}
                   </p>
                   <p className=" flex h-auto justify-center items-center mb-2">
-                    Phone:{" "}
-                    <span className="text-slate-500">
-                      {shippingInfo.phoneNo}
-                    </span>
+                    Phone: {shippingInfo.phoneNo}
                   </p>
                   <p className=" flex h-auto justify-center items-center mb-2 ">
-                    Address:
-                    <span className="text-slate-500">{address}</span>
+                    Address: {address}
                   </p>
                 </div>
               </div>
@@ -127,17 +123,18 @@ const ConfirmOrder = () => {
                   cartItems.map((item) => (
                     <div
                       key={item.product}
-                      className="flex justify-around items-center my-3 border-b-[0.5px] border-slate-500 pb-2"
+                      className="flex justify-around items-center my-3 "
                     >
                       <img className="h-auto w-28" src={item.image} alt="Product" />
                       <div
                         onClick={() => {
                           history.push(`/product/${item.product}`);
                         }}
+                        className=" text-xl"
                       >
                         {item.name}
                       </div>
-                      <span>
+                      <span className=" text-xl">
                         {item.quantity} X ₹{item.price} ={" "}
                         <b>₹{item.price * item.quantity}</b>
                       </span>
@@ -155,27 +152,22 @@ const ConfirmOrder = () => {
               <div>
                 <div className="text-xl">
                   <p className=" flex h-auto justify-center items-center mb-2 ">
-                    Subtotal:
-                    <span className="text-slate-500">₹{subtotal}</span>
+                    Subtotal: ₹{subtotal}
                   </p>
 
                   <p className=" flex h-auto justify-center items-center mb-2 ">
-                    Shipping Charges:
-                    <span className="text-slate-500">₹{shippingCharges}</span>
+                    Shipping Charges: ₹{shippingCharges}
                   </p>
 
                   <p className=" flex h-auto justify-center items-center mb-2 ">
-                    GST:
-                    <span className="text-slate-500">₹{tax}</span>
+                    GST: ₹{tax}
                   </p>
                 </div>
               </div>
 
               <div className=" text-xl">
                 <p className=" flex h-auto justify-center items-center mb-2 ">
-                  <b>Total:</b>
-
-                  <span className="text-slate-500">₹{totalPrice}</span>
+                  <b>Total: ₹{totalPrice}</b>
                 </p>
               </div>
 

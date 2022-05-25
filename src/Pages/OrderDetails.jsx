@@ -30,10 +30,10 @@ const OrderDetails = () => {
         <>
           <div className="bg-white pb-20">
             <Navbar />
+            <div className=" text-center pb-5 box-border text-2xl pt-36 text-slate-900 transition-all duration-500 bg-slate-300">
+             Order #{order && order._id}
+            </div>
             <div className="mt-24 flex flex-col justify-center items-center h-auto w-full">
-              <div className="text-center p-5 box-border  mt-10 text-slate-300 transition-all duration-500 bg-slate-900 w-full ">
-                Order #{order && order._id}
-              </div>
               <div className="text-xl text-black mt-5 underline underline-offset-4 ">
                 Shipping Info
               </div>

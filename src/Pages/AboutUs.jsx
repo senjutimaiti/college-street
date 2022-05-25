@@ -54,7 +54,7 @@ const AboutUs = () => {
 
   return (
     <>
-      <div className=" bg-white pb-40">
+      <div className=" bg-white pb-5">
         <Navbar />
 
         <div className=" relative flex flex-col justify-center items-center">
