@@ -25,6 +25,17 @@ const productSchema = mongoose.Schema({
       },
     },
   ],
+
+  discountoffer: {
+    type: String,
+    required: true,
+  },
+
+  discountpercent: {
+    type: Number,
+    required: false,
+  },
+
   price: {
     type: Number,
     required: [true, "Please Enter product Price"],

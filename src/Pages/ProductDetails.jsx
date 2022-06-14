@@ -16,7 +16,7 @@ import {
   Dialog,
   DialogActions,
   DialogContent,
-  DialogTitle
+  DialogTitle,
 } from "@material-ui/core";
 import { Rating } from "@material-ui/lab";
 
@@ -26,9 +26,9 @@ const ProductDetails = () => {
 
   const { product, error } = useSelector((state) => state.productDetails);
 
-    const { success, error: reviewError } = useSelector(
-      (state) => state.newReview
-    );
+  const { success, error: reviewError } = useSelector(
+    (state) => state.newReview
+  );
 
   const options = {
     size: "large",
@@ -117,6 +117,14 @@ const ProductDetails = () => {
           <div className=" p-20">
             <h3 className=" text-4xl font-extrabold">{product.name}</h3>
             <h2>₹ {product.price}</h2>
+            {product.discountoffer != "" ? (
+              <div>
+                <h2>{product.discountoffer}</h2>
+                <h1></h1>
+              </div>
+            ) : (
+              ""
+            )}
             <div>
               <ReactStars
                 edit={true}
@@ -125,7 +133,11 @@ const ProductDetails = () => {
                 activeColor="red"
                 value={product.ratings}
               />
-              <Button text="ADD RATING" onClick={submitReviewToggle} className=" border-2 rounded-lg border-black w-full p-2 font-bold text-md text-black bg-white hover:bg-black hover:text-white  transition-all duration-700 my-5" />
+              <Button
+                text="ADD RATING"
+                onClick={submitReviewToggle}
+                className=" border-2 rounded-lg border-black w-full p-2 font-bold text-md text-black bg-white hover:bg-black hover:text-white  transition-all duration-700 my-5"
+              />
               <Dialog
                 aria-labelledby="simple-dialog-title"
                 open={open}
@@ -140,8 +152,16 @@ const ProductDetails = () => {
                   />
                 </DialogContent>
                 <DialogActions>
-                  <Button text="CANCEL" onClick={submitReviewToggle} className=" border-2 rounded-lg border-black w-full p-2 font-bold text-md text-black bg-white hover:bg-black hover:text-white  transition-all duration-700 " />
-                  <Button text="SUBMIT" onClick={reviewSubmitHandler} className=" border-2 rounded-lg border-black w-full p-2 font-bold text-md text-black bg-white hover:bg-black hover:text-white  transition-all duration-700 " />
+                  <Button
+                    text="CANCEL"
+                    onClick={submitReviewToggle}
+                    className=" border-2 rounded-lg border-black w-full p-2 font-bold text-md text-black bg-white hover:bg-black hover:text-white  transition-all duration-700 "
+                  />
+                  <Button
+                    text="SUBMIT"
+                    onClick={reviewSubmitHandler}
+                    className=" border-2 rounded-lg border-black w-full p-2 font-bold text-md text-black bg-white hover:bg-black hover:text-white  transition-all duration-700 "
+                  />
                 </DialogActions>
               </Dialog>
             </div>

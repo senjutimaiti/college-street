@@ -22,6 +22,8 @@ const NewProduct = () => {
   const [category, setCategory] = useState("");
   const [stock, setStock] = useState(0);
   const [images, setImages] = useState([]);
+  const [discountoffer, setDiscountoffer] = useState("");
+  const [discountpercent, setDiscountpercent] = useState(0);
   const [imagesPreview, setImagesPreview] = useState([]);
 
   const categories = ["Fruits", "Vegetables", "Dairy Products", "Meat"];
@@ -49,6 +51,8 @@ const NewProduct = () => {
     myForm.set("description", description);
     myForm.set("category", category);
     myForm.set("stock", stock);
+    myForm.set("discountoffer", discountoffer);
+    myForm.set("discountpercent", discountpercent);
 
     images.forEach((image) => {
       myForm.append("images", image);
@@ -149,6 +153,26 @@ const NewProduct = () => {
                   label="Stock"
                   required
                   onChange={(e) => setStock(e.target.value)}
+                />
+              </div>
+
+              <div>
+                <Input
+                  type="text"
+                  placeholder="Offer Name"
+                  label="Offer Name"
+                  value={discountoffer}
+                  required
+                  onChange={(e) => setDiscountoffer(e.target.value)}
+                />
+              </div>
+
+              <div>
+                <Input
+                  type="number"
+                  placeholder="Discount Percentage"
+                  label="Discount Percentage"
+                  onChange={(e) => setDiscountpercent(e.target.value)}
                 />
               </div>
 
