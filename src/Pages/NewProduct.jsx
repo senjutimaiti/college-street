@@ -162,7 +162,6 @@ const NewProduct = () => {
                   placeholder="Offer Name"
                   label="Offer Name"
                   value={discountoffer}
-                  required
                   onChange={(e) => setDiscountoffer(e.target.value)}
                 />
               </div>
