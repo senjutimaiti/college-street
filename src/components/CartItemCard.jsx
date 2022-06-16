@@ -19,7 +19,11 @@ const CartItemCard = ({ item, deleteCartItems }) => {
         >
           {item.name}
         </div>
-        <span>{`Price: ₹${item.price}`}</span>
+        <span>{`Price: ₹${
+          item.discountoffer
+            ? item.price - item.price * (item.discountpercent / 100)
+            : item.price
+        }`}</span>
         <Button
           text="REMOVE"
           className=" border-2 rounded-lg border-black p-2 font-bold text-md hover:text-black hover:bg-white bg-black text-white  transition-all duration-700 "

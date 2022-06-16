@@ -17,7 +17,12 @@ const ConfirmOrder = () => {
   const Razorpay = useRazorpay();
 
   const subtotal = cartItems.reduce(
-    (acc, item) => acc + item.quantity * item.price,
+    (acc, item) =>
+      acc +
+      item.quantity *
+        (item.discountoffer
+          ? item.price - item.price * (item.discountpercent / 100)
+          : item.price),
     0
   );
 
@@ -25,7 +30,7 @@ const ConfirmOrder = () => {
 
   const tax = subtotal * 0.18;
 
-  const totalPrice = subtotal + tax + shippingCharges;
+  const totalPrice = (subtotal + tax + shippingCharges).toFixed(2);
 
   const address = `${shippingInfo.address}, ${shippingInfo.city}, ${shippingInfo.state}, ${shippingInfo.pinCode}, ${shippingInfo.country}`;
 
@@ -125,7 +130,11 @@ const ConfirmOrder = () => {
                       key={item.product}
                       className="flex justify-around items-center my-3 "
                     >
-                      <img className="h-auto w-28" src={item.image} alt="Product" />
+                      <img
+                        className="h-auto w-28"
+                        src={item.image}
+                        alt="Product"
+                      />
                       <div
                         onClick={() => {
                           history.push(`/product/${item.product}`);
@@ -135,8 +144,23 @@ const ConfirmOrder = () => {
                         {item.name}
                       </div>
                       <span className=" text-xl">
-                        {item.quantity} X ₹{item.price} ={" "}
-                        <b>₹{item.price * item.quantity}</b>
+                        {item.quantity} X ₹
+                        {item.discountoffer
+                          ? item.discountoffer
+                            ? item.price -
+                              item.price * (item.discountpercent / 100)
+                            : item.price
+                          : item.price}
+                        =
+                        <b>
+                          ₹
+                          {item.discountoffer
+                            ? item.discountoffer
+                              ? item.price -
+                                item.price * (item.discountpercent / 100)
+                              : item.price
+                            : item.price * item.quantity}
+                        </b>
                       </span>
                     </div>
                   ))}

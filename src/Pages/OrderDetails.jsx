@@ -31,7 +31,7 @@ const OrderDetails = () => {
           <div className="bg-white pb-20">
             <Navbar />
             <div className=" text-center pb-5 box-border text-2xl pt-36 text-slate-900 transition-all duration-500 bg-slate-300">
-             Order #{order && order._id}
+              Order #{order && order._id}
             </div>
             <div className="mt-24 flex flex-col justify-center items-center h-auto w-full">
               <div className="text-xl text-black mt-5 underline underline-offset-4 ">

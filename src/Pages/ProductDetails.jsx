@@ -42,6 +42,12 @@ const ProductDetails = () => {
   const [quantity, setQuantity] = useState(1);
   const [open, setOpen] = useState(false);
   const [rating, setRating] = useState(0);
+  // const [discountprice, setDiscountprice] = useState(0);
+
+  // const calculatediscount = () => {
+  //   const p = product.price - (product.price * product.discountpercent) / 100;
+  //   setDiscountprice(p);
+  // };
 
   const increaseQuantity = () => {
     if (product.stock <= quantity) return;
@@ -119,8 +125,17 @@ const ProductDetails = () => {
             <h2>₹ {product.price}</h2>
             {product.discountoffer != "" ? (
               <div>
-                <h2>{product.discountoffer}</h2>
-                <h1></h1>
+                <h2 className="text-xl text-orange-700">
+                  {product.discountoffer}
+                </h2>
+                <h2 className="text-xl text-orange-700">
+                  {product.discountpercent}% Off
+                </h2>
+                <h1>
+                  Discount Price: ₹{" "}
+                  {product.price -
+                    (product.price * product.discountpercent) / 100}
+                </h1>
               </div>
             ) : (
               ""

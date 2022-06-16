@@ -36,7 +36,7 @@ const Cart = () => {
   };
 
   const checkoutHandler = () => {
-    if(isAuthenticated){
+    if (isAuthenticated) {
       history.push("/shipping");
     } else {
       history.push("/login");
@@ -50,11 +50,14 @@ const Cart = () => {
         <div className=" mt-40">
           {cartItems.length === 0 ? (
             <div className=" m-auto text-center p-[100px] h-96 flex flex-col justify-center items-center">
-              <MdRemoveShoppingCart className=" text-9xl"/>
+              <MdRemoveShoppingCart className=" text-9xl" />
               <div className=" text-2xl">No Product in Your Cart</div>
-              <Button onClick={() => {history.push("/products")}}
-              text ="VIEW PRODUCTS"
-              className=" mt-2 border-2 rounded-lg border-black w-full p-2 font-bold text-md hover:text-black hover:bg-white bg-black text-white  transition-all duration-700 "
+              <Button
+                onClick={() => {
+                  history.push("/products");
+                }}
+                text="VIEW PRODUCTS"
+                className=" mt-2 border-2 rounded-lg border-black w-full p-2 font-bold text-md hover:text-black hover:bg-white bg-black text-white  transition-all duration-700 "
               />
             </div>
           ) : (
@@ -68,35 +71,50 @@ const Cart = () => {
 
                 {cartItems &&
                   cartItems.map((item) => (
-                    <div className=" w-[90%] m-auto grid md:grid-cols-[4fr_1fr_1fr] grid-cols-[3fr_1fr_1fr]" key={item.product}>
-                      <CartItemCard item={item} deleteCartItems={deleteCartItems} />
+                    <div
+                      className=" w-[90%] m-auto grid md:grid-cols-[4fr_1fr_1fr] grid-cols-[3fr_1fr_1fr]"
+                      key={item.product}
+                    >
+                      <CartItemCard
+                        item={item}
+                        deleteCartItems={deleteCartItems}
+                      />
                       <div className=" flex items-start flex-col justify-center">
-                        <div className = " flex justify-center items-center">
-                          <button 
+                        <div className=" flex justify-center items-center">
+                          <button
                             onClick={() =>
                               decreaseQuantity(item.product, item.quantity)
                             }
                             className=" bg-slate-400 px-3 cursor-pointer text-white transition-all duration-500 hover:bg-slate-700"
-                            >
+                          >
                             -
                           </button>
-                          <input type="number" value={item.quantity} readOnly className=" p-2 text-center font-bold w-14"/>
+                          <input
+                            type="number"
+                            value={item.quantity}
+                            readOnly
+                            className=" p-2 text-center font-bold w-14"
+                          />
                           <button
                             onClick={() =>
                               increaseQuantity(
                                 item.product,
                                 item.quantity,
                                 item.stock
-                                )
-                              }
-                              className=" bg-slate-400 px-3 cursor-pointer text-white transition-all duration-500 hover:bg-slate-700"
-                              >
+                              )
+                            }
+                            className=" bg-slate-400 px-3 cursor-pointer text-white transition-all duration-500 hover:bg-slate-700"
+                          >
                             +
                           </button>
                         </div>
                       </div>
                       <p className=" flex flex-col justify-center items-end pr-6">{`₹${
-                        item.price * item.quantity
+                        item.discountoffer
+                          ? (item.price -
+                              item.price * (item.discountpercent / 100)) *
+                            item.quantity
+                          : item.price * item.quantity
                       }`}</p>
                     </div>
                   ))}
@@ -105,12 +123,20 @@ const Cart = () => {
                   <div className=" border-t-2 mt-10 mx-auto px-12 md:px-40 box-border pt-16 pb-5 flex justify-center">
                     <p className=" text-xl px-2">Gross Total: </p>
                     <p className=" text-xl px-2">{`₹${cartItems.reduce(
-                      (acc, item) => acc + item.quantity * item.price,
+                      (acc, item) =>
+                        acc +
+                        item.quantity *
+                          (item.discountoffer
+                            ? item.price -
+                              item.price * (item.discountpercent / 100)
+                            : item.price),
                       0
                     )}`}</p>
                   </div>
-                  <Button text="CHECK OUT" onClick={checkoutHandler} 
-                  className=" border-2 rounded-lg border-black p-2 font-bold text-md text-black bg-white hover:bg-black hover:text-white transition-all duration-700 "
+                  <Button
+                    text="CHECK OUT"
+                    onClick={checkoutHandler}
+                    className=" border-2 rounded-lg border-black p-2 font-bold text-md text-black bg-white hover:bg-black hover:text-white transition-all duration-700 "
                   />
                 </div>
               </div>
