@@ -84,7 +84,7 @@ const Dashboard = () => {
                     </div>
                     <div className=" flex justify-center">
                         <div onClick={() => {history.push("/admin/products")}} className=" text-2xl text-center bg-red-400 p-6 m-6 w-40 h-40 rounded-full flex flex-col justify-center items-center">
-                            <p>Product</p>
+                            <p>Products</p>
                             <p>{products && products.length}</p>
                         </div>
                         <div onClick={() => {history.push("/admin/orders")}} className=" text-2xl text-center bg-yellow-400 p-6 m-6 w-40 h-40 rounded-full flex flex-col justify-center items-center">
