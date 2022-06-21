@@ -48,6 +48,9 @@ const Cart = () => {
       <div className=" bg-white pb-20">
         <Navbar />
         <div className=" mt-40">
+        <div className="text-center w-screen h-auto text-5xl text-black mt-6 font-bold mb-12">
+              Cart
+        </div>
           {cartItems.length === 0 ? (
             <div className=" m-auto text-center p-[100px] h-96 flex flex-col justify-center items-center">
               <MdRemoveShoppingCart className=" text-9xl" />
