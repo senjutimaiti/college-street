@@ -32,7 +32,7 @@ const ContactUs = () => {
             </p>
             <p className=" text-xl text-black font-bold my-5">Email</p>
             <p className=" text-xl text-black font-light mb-10">
-              info@ohfood.come
+            oh_food@yahoo.com
             </p>
             <p className=" text-xl text-black font-bold my-5">Telephone</p>
             <p className=" text-xl text-black font-light mb-10">
