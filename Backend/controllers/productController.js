@@ -6,7 +6,7 @@ const cloudinary = require("cloudinary");
 
 //Get all products
 exports.getAllProducts = catchAsyncErrors(async (req, res, next) => {
-  const resultPerPage = 8;
+  const resultPerPage = 10;
   const productsCount = await Product.countDocuments();
 
   const apiFeature = new ApiFeatures(Product.find(), req.query)
@@ -138,7 +138,6 @@ exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
     product,
   });
 });
-
 
 //Delete products -- admin only
 exports.deleteProduct = catchAsyncErrors(async (req, res, next) => {

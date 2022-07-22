@@ -24,12 +24,9 @@ const Products = () => {
   const [category, setCategory] = useState("");
   const [ratings, setRatings] = useState(0);
 
-  const {
-    products,
-    productsCount,
-    resultPerPage,
-    error,
-  } = useSelector((state) => state.products);
+  const { products, productsCount, resultPerPage, error } = useSelector(
+    (state) => state.products
+  );
 
   const setCurrentPageNo = (e) => {
     setCurrentPage(e);
@@ -83,7 +80,7 @@ const Products = () => {
                 valueLabelDisplay="auto"
                 aria-labelledby="range-slider"
                 min={0}
-                max={25000}
+                max={1000}
               />
 
               <Typography>Categories</Typography>
